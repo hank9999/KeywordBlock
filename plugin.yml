@@ -1,0 +1,13 @@
+name: KeywordBlock
+main: com.github.hank9999.KeywordBlock.KeywordBlock
+version: 1.0
+author: hank9999
+
+permissions:
+  KeywordBlock.admin:
+    description: KeywordBlock Admin Perm
+    default: op
+
+commands:
+  keywordblock:
+    description: KeywordBlock Main Command
