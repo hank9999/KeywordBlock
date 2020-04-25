@@ -18,7 +18,7 @@ public class ChatListen implements Listener {
         if (!event.isCancelled()) {  // 判断是否被取消
             String username = player.getName();
             String text = ChatColor.stripColor(event.getMessage());  //获取消息
-            String key_text = text.replaceAll("&[0-9]","").replaceAll("&[a-f]","").replaceAll("&[k-o]","").replaceAll("&r", "");
+            String key_text = text.replaceAll("&[0-9]|&[a-f]|&[k-o]|&r","");
             key_text = key_text.replaceAll( "[\\p{P}+~$`^=|<>～｀＄＾＋＝｜＜＞￥×]" , "");
             key_text = key_text.replace(" ","");
             for (String keyword : KeywordBlock.plugin.getConfig().getStringList("words")) {
