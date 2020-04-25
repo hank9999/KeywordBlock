@@ -19,7 +19,7 @@ public class ChatListen implements Listener {
             String username = player.getName();
             String text = ChatColor.stripColor(event.getMessage());  //获取消息
             String key_text = text.replaceAll("&[0-9]|&[a-f]|&[k-o]|&r","");
-            key_text = key_text.replaceAll( "[\\p{P}+~$`^=|<>～｀＄＾＋＝｜＜＞￥×]" , "");
+            key_text = key_text.replaceAll( "[\\p{P}+~$`^=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！……*]" , "");
             key_text = key_text.replace(" ","");
             for (String keyword : KeywordBlock.plugin.getConfig().getStringList("words")) {
                 if (keyword.equalsIgnoreCase("")) {
