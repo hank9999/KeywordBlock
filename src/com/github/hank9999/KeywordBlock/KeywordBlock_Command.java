@@ -3,10 +3,15 @@ package com.github.hank9999.KeywordBlock;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabExecutor;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class KeywordBlock_Command implements CommandExecutor {
+public class KeywordBlock_Command implements TabExecutor {
+
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (command.getName().equalsIgnoreCase("keywordblock")) {
             if (commandSender.hasPermission("KeywordBlock.admin")) {
@@ -92,5 +97,12 @@ public class KeywordBlock_Command implements CommandExecutor {
             }
         }
         return true;
+    }
+
+    private String[] Commands = {"help", "reload", "list", "add", "del"};
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        if (args.length > 1) return new ArrayList<>();
+        if (args.length == 0) return Arrays.asList(Commands);
+        return Arrays.stream(Commands).filter(s -> s.startsWith(args[0])).collect(Collectors.toList());
     }
 }
