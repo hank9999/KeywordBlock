@@ -63,7 +63,6 @@ public class KeywordBlock_Command implements TabExecutor {
                         KeywordBlock.plugin.reloadConfig();
                         String message = Lib.color_translate("&2[&eKeywordBlock&2] &9" + commandSender.getName() + " &radd a keyword &3" + strings[1]);
                         KeywordBlock.plugin.getServer().broadcast(message, "KeywordBlock.admin");
-                        KeywordBlock.plugin.getLogger().info(message);
                     }
 
                     return true;
@@ -83,7 +82,6 @@ public class KeywordBlock_Command implements TabExecutor {
                         KeywordBlock.plugin.reloadConfig();
                         String message = Lib.color_translate("&2[&eKeywordBlock&2] &9" + commandSender.getName() + " &rdel a keyword &3" + strings[1]);
                         KeywordBlock.plugin.getServer().broadcast(message, "KeywordBlock.admin");
-                        KeywordBlock.plugin.getLogger().info(message);
 
                     } else {
                         commandSender.sendMessage(Lib.color_translate("&2[&eKeywordBlock&2] &rThis keyword is not exist"));
