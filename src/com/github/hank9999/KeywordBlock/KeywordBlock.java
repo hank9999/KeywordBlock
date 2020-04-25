@@ -21,7 +21,7 @@ public final class KeywordBlock extends JavaPlugin {
         saveDefaultConfig();
         reloadConfig();
         getLogger().info(ChatColor.BLUE + "关键词屏蔽插件已启用");
-        getLogger().info(ChatColor.GOLD + "版本v1.1");
+        getLogger().info(ChatColor.GOLD + "版本v1.2");
 
         if (getConfig().getBoolean("function.detect")) {
             getServer().getPluginManager().registerEvents(new ChatListen(), this);

@@ -21,11 +21,12 @@ public class ChatListen implements Listener {
             String key_text = text.replaceAll("&[0-9]|&[a-f]|&[k-o]|&r","");
             key_text = key_text.replaceAll( "[\\p{P}+~$`^=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！……*]" , "");
             key_text = key_text.replace(" ","");
+            String key_text2 = text.replaceAll("&[0-9]|&[a-f]|&[k-o]|&r","").replace(" ","");
             for (String keyword : KeywordBlock.plugin.getConfig().getStringList("words")) {
                 if (keyword.equalsIgnoreCase("")) {
                     continue;
                 }
-                if (key_text.contains(keyword)) {
+                if (key_text.contains(keyword) || key_text2.contains(keyword)) {
                     event.setCancelled(true);
                     for (String warn_message : KeywordBlock.plugin.getConfig().getStringList("message.warn.player")) {
                         player.sendMessage(Lib.color_translate(warn_message.replace("%player_name%", username).replace("%player_message%", text)));
