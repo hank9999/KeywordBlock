@@ -18,11 +18,12 @@ public class ChatListen implements Listener {
         if (!event.isCancelled()) {  // 判断是否被取消
             String username = player.getName();
             String text = ChatColor.stripColor(event.getMessage());  //获取消息
-            String key_text = text.replaceAll("&[0-9]|&[a-f]|&[k-o]|&r","");
-            key_text = key_text.replaceAll( "[\\p{P}+~$`^=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！……*]" , "");
-            key_text = key_text.replace(" ","");
-            String key_text2 = text.replaceAll("&[0-9]|&[a-f]|&[k-o]|&r","").replace(" ","");
+            String key_text = text.replaceAll("&[0-9]|&[a-f]|&[k-o]|&r|&[A-F]|&[K-O]|&R","").replace(" ","");
+            String key_text2 = key_text.replaceAll( "[\\p{P}+~$`^=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！……*]" , "");
+            key_text = key_text.toLowerCase();
+            key_text2 = key_text2.toLowerCase();
             for (String keyword : KeywordBlock.plugin.getConfig().getStringList("words")) {
+                keyword = keyword.toLowerCase();
                 if (keyword.equalsIgnoreCase("")) {
                     continue;
                 }
