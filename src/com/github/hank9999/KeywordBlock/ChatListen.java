@@ -36,7 +36,6 @@ public class ChatListen implements Listener {
                         for (String broadcast_message : KeywordBlock.plugin.getConfig().getStringList("message.broadcast.admin")) {
                             broadcast_message = Lib.color_translate(broadcast_message.replace("%player_name%", username).replace("%player_message%", text));
                             KeywordBlock.plugin.getServer().broadcast(broadcast_message, "KeywordBlock.admin");
-                            KeywordBlock.plugin.getLogger().info(broadcast_message);
                             break;
                         }
                     }
