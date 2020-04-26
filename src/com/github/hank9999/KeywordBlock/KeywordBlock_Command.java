@@ -88,6 +88,8 @@ public class KeywordBlock_Command implements TabExecutor {
                     }
                     return true;
                 }
+                commandSender.sendMessage(Lib.color_translate("&2[&eKeywordBlock&2] &cUnknown Command"));
+                return true;
 
             } else {
                 commandSender.sendMessage(Lib.color_translate("&2[&eKeywordBlock&2] &r&cYou don't have permission to use this command"));
