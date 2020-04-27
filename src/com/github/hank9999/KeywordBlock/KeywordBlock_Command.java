@@ -101,8 +101,12 @@ public class KeywordBlock_Command implements TabExecutor {
 
     private String[] Commands = {"help", "reload", "list", "add", "del"};
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-        if (args.length > 1) return new ArrayList<>();
         if (args.length == 0) return Arrays.asList(Commands);
+        if (args[0].equalsIgnoreCase("del")) {
+            List<String> keywords = KeywordBlock.plugin.getConfig().getStringList("words");
+            return keywords;
+        }
+        if (args.length > 1) return new ArrayList<>();
         return Arrays.stream(Commands).filter(s -> s.startsWith(args[0])).collect(Collectors.toList());
     }
 }
