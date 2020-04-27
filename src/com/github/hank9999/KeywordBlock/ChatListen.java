@@ -30,15 +30,14 @@ public class ChatListen implements Listener {
                     event.setCancelled(true);
                     for (String warn_message : KeywordBlock.plugin.getConfig().getStringList("message.warn.player")) {
                         player.sendMessage(Lib.color_translate(warn_message.replace("%player_name%", username).replace("%player_message%", text)));
-                        break;
                     }
                     if (KeywordBlock.plugin.getConfig().getBoolean("function.admin-broadcast")) {
                         for (String broadcast_message : KeywordBlock.plugin.getConfig().getStringList("message.broadcast.admin")) {
                             broadcast_message = Lib.color_translate(broadcast_message.replace("%player_name%", username).replace("%player_message%", text));
                             KeywordBlock.plugin.getServer().broadcast(broadcast_message, "KeywordBlock.admin");
-                            break;
                         }
                     }
+                    break;
                 }
             }
         }
