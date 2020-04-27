@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 public class KeywordBlock_Command implements TabExecutor {
 
+    @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (command.getName().equalsIgnoreCase("keywordblock")) {
             if (commandSender.hasPermission("KeywordBlock.admin")) {
@@ -100,6 +101,8 @@ public class KeywordBlock_Command implements TabExecutor {
     }
 
     private String[] Commands = {"help", "reload", "list", "add", "del"};
+
+    @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 0) return Arrays.asList(Commands);
         if (args[0].equalsIgnoreCase("del")) {
