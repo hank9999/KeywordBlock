@@ -10,12 +10,14 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://H:/Spigot-1.13.2-f96d8c3-20190425-0439.jar!/" />
+          <root url="file://$MODULE_DIR$/../Plugin_Libs" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://H:/Spigot-1.13.2-f96d8c3-20190425-0439.jar!/" />
+          <root url="file://$MODULE_DIR$/../Plugin_Libs" />
         </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/../Plugin_Libs" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../Plugin_Libs" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
   </component>

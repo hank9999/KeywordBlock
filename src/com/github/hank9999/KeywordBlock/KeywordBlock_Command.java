@@ -1,7 +1,6 @@
 package com.github.hank9999.KeywordBlock;
 
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 
@@ -11,6 +10,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class KeywordBlock_Command implements TabExecutor {
+
+    private String[] Commands = {"help", "reload", "list", "add", "del"};
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
@@ -100,14 +101,11 @@ public class KeywordBlock_Command implements TabExecutor {
         return true;
     }
 
-    private String[] Commands = {"help", "reload", "list", "add", "del"};
-
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 0) return Arrays.asList(Commands);
-        if (args[0].equalsIgnoreCase("del")) {
-            List<String> keywords = KeywordBlock.plugin.getConfig().getStringList("words");
-            return keywords;
+        if (args[0].equalsIgnoreCase("del") && args.length == 2) {
+            return KeywordBlock.plugin.getConfig().getStringList("words");
         }
         if (args.length > 1) return new ArrayList<>();
         return Arrays.stream(Commands).filter(s -> s.startsWith(args[0])).collect(Collectors.toList());

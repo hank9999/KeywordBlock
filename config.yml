@@ -5,10 +5,10 @@ function:
 message:
   broadcast:
     admin:
-      - '&2[&d关键词屏蔽&2] &9%player_name% &b试图发送违禁词语 &c%player_message%'
+      - '&2[&dKeywordBlock&2] &9%player_name% &btry to send blocked word &c%player_message%'
   warn:
     player:
-      - '&2[&d关键词屏蔽&2] &c%player_message% 包含违禁词语!'
-      - '&2[&d关键词屏蔽&2] &c请不要尝试发送违禁词语!'
+      - '&2[&dKeywordBlock&2] &c%player_message% include blocked word'
+      - '&2[&dKeywordBlock&2] &cDo not try to send blocked word'
 
 words:

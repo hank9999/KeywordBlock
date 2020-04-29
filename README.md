@@ -1,21 +1,20 @@
 # KeywordBlock
 A Bukkit Plugin to Block Keyword
 
-# 使用方法
-下载最新的Releases版本，扔进Plugins文件夹，使用plugman加载或重启服务器  
+# Usage
+Download latest releases to your server and reboot
 
-# 特点
- - 添加/删除关键词 提醒消息管理员+控制台广播
- - 玩家试图发送关键词 提醒消息管理员+控制台广播
- - 防止彩字跳过识别
- - 提醒消息自定义
+# Features
+ - Add/Remove keyword event broadcast message to administrator and console
+ - Player try to send block word broadcast message to administrator and console
+ - Filter color words - '&'
+ - Reminder message customization
 
-# 权限节点
+# Permission
  - KeywordBlock.admin  
-   - KeywordBlock的管理员
-   - OP默认有用此权限
+   - KeywordBlock's Admin
 
-# 指令
+# Command
  - /keywordblock
  - /keywordblock help
  - /keywordblock reload
@@ -23,5 +22,5 @@ A Bukkit Plugin to Block Keyword
  - /keywordblock add <keyword>
  - /keywordblock del <keyword>
 
-# 开源协议
+# License
 MIT License

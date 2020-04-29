@@ -1,44 +1,42 @@
 package com.github.hank9999.KeywordBlock;
 
-import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.ChatColor;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.Objects;
 
 public final class KeywordBlock extends JavaPlugin {
 
     public static KeywordBlock plugin;
 
-    //当插件被Load(加载)时执行
     @Override
     public void onLoad() {
-        getLogger().info(ChatColor.BLUE + "关键词屏蔽插件正在加载");
+        getLogger().info(ChatColor.BLUE + "Keywoord Plugin Load");
     }
 
-    //当插件被Enable(开启)时执行
     @Override
     public void onEnable() {
         plugin = this;
         saveDefaultConfig();
         reloadConfig();
-        getLogger().info(ChatColor.BLUE + "关键词屏蔽插件已启用");
-        getLogger().info(ChatColor.GOLD + "版本v1.4.3");
+        getLogger().info(ChatColor.BLUE + "Keywoord Plugin Enable");
+        getLogger().info(ChatColor.GOLD + "Version v1.4.4");
 
         if (getConfig().getBoolean("function.detect")) {
-            getServer().getPluginManager().registerEvents(new ChatListen(), this);
-            getLogger().info(ChatColor.GOLD + "已启用消息检查");
+            getServer().getPluginManager().registerEvents(new ChatListener(), this);
+            getLogger().info(ChatColor.GOLD + "Chat Check Enable");
         } else {
-            getLogger().info(ChatColor.GOLD + "已禁用消息检查");
+            getLogger().info(ChatColor.GOLD + "Chat Check Disable");
         }
 
-        getServer().getPluginCommand("keywordblock").setExecutor(new KeywordBlock_Command());
-        getServer().getPluginCommand("keywordblock").setTabCompleter(new KeywordBlock_Command());
+        Objects.requireNonNull(getServer().getPluginCommand("keywordblock")).setExecutor(new KeywordBlock_Command());
+        Objects.requireNonNull(getServer().getPluginCommand("keywordblock")).setTabCompleter(new KeywordBlock_Command());
 
     }
 
-
-    //当插件被Disable(关闭)时执行
     @Override
     public void onDisable() {
         plugin = null;
-        getLogger().info(ChatColor.BLUE + "关键词屏蔽插件已停用");
+        getLogger().info(ChatColor.BLUE + "Keywoord Plugin Disable");
     }
 }

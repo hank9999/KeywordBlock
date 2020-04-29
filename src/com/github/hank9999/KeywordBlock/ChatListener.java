@@ -1,26 +1,25 @@
 package com.github.hank9999.KeywordBlock;
 
-import org.bukkit.entity.Player;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-public class ChatListen implements Listener {
+public class ChatListener implements Listener {
 
-    //监听用户名 和 用户消息内容
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
         if (player.hasPermission("KeywordBlock.admin")) {
             return;
         }
-        if (!event.isCancelled()) {  // 判断是否被取消
+        if (!event.isCancelled()) {
             String username = player.getName();
-            String text = ChatColor.stripColor(event.getMessage());  //获取消息
-            String text_low = text.toLowerCase().replace(" ","");
-            String key_text = text_low.replaceAll("&[0-9]|&[a-z]","");
-            String key_text2 = key_text.replaceAll( "[\\p{P}+~$`^=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！……*]" , "");
+            String text = ChatColor.stripColor(event.getMessage());
+            String text_low = text.toLowerCase().replace(" ", "");
+            String key_text = text_low.replaceAll("&[0-9]|&[a-z]", "");
+            String key_text2 = key_text.replaceAll("[\\p{P}+~$`^=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！…*丶]", "");
             for (String keyword : KeywordBlock.plugin.getConfig().getStringList("words")) {
                 keyword = keyword.toLowerCase();
                 if (keyword.equalsIgnoreCase("")) {
