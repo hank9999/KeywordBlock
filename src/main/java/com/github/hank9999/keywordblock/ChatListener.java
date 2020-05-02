@@ -18,17 +18,29 @@ public class ChatListener implements Listener {
             String username = player.getName();
             String text = ChatColor.stripColor(event.getMessage());
             String text_low = text.toLowerCase().replace(" ", "");
-            String key_text = text_low.replaceAll("&[0-9]|&[a-z]", "");
-            String key_text2 = key_text.replaceAll("[^a-zA-Z0-9\\\\u4E00-\\\\u9FA5]", "").replaceAll("[\\s*|\t|\r|\n]", "");
-            String key_text3 = key_text2.replaceAll("[^\\\\u4E00-\\\\u9FA5]", "");
-            String key_text4 = key_text.replaceAll("%[0-9]|%[a-z]", "");
-            String key_text5 = key_text4.replaceAll("[^a-zA-Z0-9\\\\u4E00-\\\\u9FA5]", "").replaceAll("[\\s*|\t|\r|\n]", "");
+            String key_text_a = text_low.replaceAll("&[0-9]|&[a-z]", "");
+            String key_text_b = text_low.replaceAll("%[0-9]|%[a-z]", "");
+            String key_text_c = key_text_a.replaceAll("%[0-9]|%[a-z]", "");
+            String key_text_replaceall = key_text_c.replaceAll("[^a-zA-Z0-9\\u4E00-\\u9FA5]", "");
+            String key_text_only_en = key_text_replaceall.replace("[^a-zA-Z]", "");
+            String key_text_only_en_123 = key_text_replaceall.replace("[^a-zA-Z0-9]", "");
+            String key_text_only_cn = key_text_replaceall.replace("[^\\u4E00-\\u9FA5]", "");
+            String key_text_a_no = text_low.replaceAll("&[0-9]|&[a-z]", "").replaceAll("[\\s*|\t|\r|\n]", "").replaceAll("\\\\[a-z]|\\\\[A-Z]|/[A-Z]|/[a-z]","");
+            String key_text_b_no = text_low.replaceAll("%[0-9]|%[a-z]", "").replaceAll("[\\s*|\t|\r|\n]", "").replaceAll("\\\\[a-z]|\\\\[A-Z]|/[A-Z]|/[a-z]","");
+            String key_text_c_no = key_text_a_no.replaceAll("%[0-9]|%[a-z]", "");
+            String key_text_replaceall_no = key_text_c_no.replaceAll("[^a-zA-Z0-9\\u4E00-\\u9FA5]", "");
+            String key_text_only_en_no = key_text_replaceall_no.replace("[^a-zA-Z]", "");
+            String key_text_only_en_123_no = key_text_replaceall_no.replace("[^a-zA-Z0-9]", "");
+            String key_text_only_cn_no = key_text_replaceall_no.replace("[^\\u4E00-\\u9FA5]", "");
+
+            String all = text_low + " " + key_text_a + " " + key_text_b + " " + key_text_c  + " " + key_text_replaceall + " " + key_text_only_en  + " " + key_text_only_en_123 + " " + key_text_only_cn + " " + key_text_a_no  + " " + key_text_b_no + " " + key_text_c_no + " " + key_text_replaceall_no  + " " + key_text_only_en_no + " " + key_text_only_en_123_no + " " + key_text_only_cn_no;
+
             for (String keyword : KeywordBlock.plugin.getConfig().getStringList("words")) {
                 keyword = keyword.toLowerCase();
                 if (keyword.equalsIgnoreCase("")) {
                     continue;
                 }
-                if (text_low.contains(keyword) || key_text.contains(keyword) || key_text2.contains(keyword) || key_text3.contains(keyword) || key_text4.contains(keyword) || key_text5.contains(keyword)) {
+                if (all.contains(keyword)) {
                     event.setCancelled(true);
                     for (String warn_message : KeywordBlock.plugin.getConfig().getStringList("message.warn.player")) {
                         player.sendMessage(Lib.color_translate(warn_message.replace("%player_name%", username).replace("%player_message%", text)));
