@@ -50,6 +50,15 @@ public final class KeywordBlock extends JavaPlugin {
 
         getLogger().info(ChatColor.BLUE + "Keywoord Plugin Enable");
         getLogger().info(ChatColor.GOLD + "Version v" + getDescription().getVersion());
+
+        new Update_Checker(this, 78091).getVersion(version -> {
+            if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
+                getLogger().info(ChatColor.AQUA + "There is not a new update available.");
+            } else {
+                getLogger().info(ChatColor.AQUA + "There is a new update " + version + " available.");
+                getLogger().info(ChatColor.AQUA + "See it in https://www.spigotmc.org/resources/keywordblock.78091/");
+            }
+        });
     }
 
     @Override
