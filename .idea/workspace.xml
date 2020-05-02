@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b02be900-49f9-427b-91bc-cefb1d71ef1c" name="默认更改列表" comment="overwrite detection">
+    <list default="true" id="b02be900-49f9-427b-91bc-cefb1d71ef1c" name="默认更改列表" comment="Support auto mute and detect other command">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/hank9999/keywordblock/Event/ChatEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/hank9999/keywordblock/Event/CommandPreprocessEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/hank9999/keywordblock/ChatListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/hank9999/keywordblock/ChatListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/hank9999/keywordblock/ChatListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/hank9999/keywordblock/KeywordBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/hank9999/keywordblock/KeywordBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/hank9999/keywordblock/KeywordBlock_Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/hank9999/keywordblock/KeywordBlock_Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588392947602</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="overwrite detection">
+      <created>1588397169190</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1588397169190</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -117,40 +130,45 @@
     <MESSAGE value="add bStats" />
     <MESSAGE value="Supplementary file" />
     <MESSAGE value="overwrite detection" />
-    <option name="LAST_COMMIT_MESSAGE" value="overwrite detection" />
+    <MESSAGE value="Support auto mute and detect other command" />
+    <option name="LAST_COMMIT_MESSAGE" value="Support auto mute and detect other command" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="579" y="113" key="CommitChangelistDialog2" timestamp="1588397132727">
+    <state x="690" y="275" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1588407599965">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="579" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588397132727" />
+    <state x="690" y="275" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588407599965" />
+    <state x="579" y="113" key="CommitChangelistDialog2" timestamp="1588411436139">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="579" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588411436139" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1588390961981">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588390961981" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1588397149720">
+    <state width="1877" height="161" key="GridCell.Tab.0.bottom" timestamp="1588411457798">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588397149720" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1588397149720">
+    <state width="1877" height="161" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588411457798" />
+    <state width="1877" height="161" key="GridCell.Tab.0.center" timestamp="1588411457798">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588397149720" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1588397149720">
+    <state width="1877" height="161" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588411457798" />
+    <state width="1877" height="161" key="GridCell.Tab.0.left" timestamp="1588411457798">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588397149720" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1588397149720">
+    <state width="1877" height="161" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588411457798" />
+    <state width="1877" height="161" key="GridCell.Tab.0.right" timestamp="1588411457798">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588397149720" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1588397161139">
+    <state width="1877" height="161" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588411457798" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1588397177206">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588397161139" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1588391393671">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588397177206" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1588403619894">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588391393671" />
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588403619894" />
   </component>
 </project>

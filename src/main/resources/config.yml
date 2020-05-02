@@ -1,14 +1,64 @@
 function:
   detect: true
   admin-broadcast: true
+  mute: enable
+  detect_other: true
+  bypass: true
 
 message:
   broadcast:
     admin:
-      - '&2[&dKeywordBlock&2] &9%player_name% &btry to send blocked word &c%player_message%'
+      - "&2[&dKeywordBlock&2] &9%player_name% &btry to send blocked word &c%player_message%"
   warn:
     player:
-      - '&2[&dKeywordBlock&2] &c%player_message% include blocked word'
-      - '&2[&dKeywordBlock&2] &cDo not try to send blocked word'
+      - "&2[&dKeywordBlock&2] &c%player_message% include blocked word"
+      - "&2[&dKeywordBlock&2] &cDo not try to send blocked word"
 
-words:
+mute:
+  times: 3
+  command: "mute %player% 30min Please mind your words"
+  message:
+    - "&2[&dKeywordBlock&2] &cYou were muted. Please mind your words."
+
+detect_other:
+  command:
+    - "/tell"
+    - "/msg"
+    - "/t"
+    - "/r"
+
+command_lang:
+  keywordblock_name: "&2[&dKeywordBlock&2]"
+  help:
+    - "&rUse &7/keywordblock help &rto get help"
+    - "&rUse &7/keywordblock reload &rto reload"
+    - "&rUse &7/keywordblock list &rto get list"
+    - "&rUse &7/keywordblock add <keyword> &rto add"
+    - "&rUse &7/keywordblock del <keyword> &rto del"
+  reload:
+    - "&rReload Config"
+  list:
+    prefix:
+      - "&rKeyword List:"
+    empty:
+      - "&3Null"
+  add:
+    without_key:
+      - "&rPlease add with keyword"
+    exists:
+      - "&rThis keyword already exists"
+    success:
+      - "&radd a keyword"
+  del:
+    without_key:
+      - "&rPlease del with keyword"
+    not_exist:
+      - "&rThis keyword is not exist"
+    success:
+      - "&rdel a keyword"
+  unknown:
+    - "&cUnknown Command"
+  no_perm:
+    - "&r&cYou do not have permission to use this command"
+
+words: []
