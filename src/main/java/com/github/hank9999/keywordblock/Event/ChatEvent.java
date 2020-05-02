@@ -74,8 +74,20 @@ public class ChatEvent implements Listener {
                     if (KeywordBlock.plugin.times.get(username).intValue() >= KeywordBlock.plugin.getConfig().getInt("mute.times")) {
                         for (String mute_message : KeywordBlock.plugin.getConfig().getStringList("mute.message")) {
                             player.sendMessage(Lib.color_translate(mute_message));
-                            KeywordBlock.plugin.getServer().dispatchCommand(KeywordBlock.plugin.getServer().getConsoleSender(),
-                                    Objects.requireNonNull(Objects.requireNonNull(KeywordBlock.plugin.getConfig().getString("mute.command")).replaceAll("%player%", username)));
+                            new BukkitRunnable() {
+                                @Override
+                                public void run() {
+                                    KeywordBlock.plugin.getServer().dispatchCommand(
+                                            KeywordBlock.plugin.getServer().getConsoleSender(),
+                                            Objects.requireNonNull(
+                                                    Objects.requireNonNull(
+                                                            KeywordBlock.plugin.getConfig().getString("mute.command")
+                                                    ).replaceAll("%player%", username)
+                                            )
+                                    );
+                                }
+                            }.runTask(KeywordBlock.plugin);
+
                         }
                         KeywordBlock.plugin.times.remove(username);
                     }

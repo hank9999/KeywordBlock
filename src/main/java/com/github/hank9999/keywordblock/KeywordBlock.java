@@ -4,10 +4,12 @@ import com.github.hank9999.keywordblock.Event.ChatEvent;
 import com.github.hank9999.keywordblock.Event.CommandPreprocessEvent;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Timer;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class KeywordBlock extends JavaPlugin {
@@ -52,7 +54,7 @@ public final class KeywordBlock extends JavaPlugin {
         getLogger().info(ChatColor.GOLD + "Version v" + getDescription().getVersion());
 
         new Update_Checker(this, 78091).getVersion(version -> {
-            if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
+            if (("v" + this.getDescription().getVersion()).equalsIgnoreCase(version)) {
                 getLogger().info(ChatColor.AQUA + "There is not a new update available.");
             } else {
                 getLogger().info(ChatColor.AQUA + "There is a new update " + version + " available.");
