@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b02be900-49f9-427b-91bc-cefb1d71ef1c" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/hank9999/keywordblock/Update_Checker.java" afterDir="false" />
+    <list default="true" id="b02be900-49f9-427b-91bc-cefb1d71ef1c" name="默认更改列表" comment="Add Update_Checker v1.6.0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/hank9999/keywordblock/KeywordBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/hank9999/keywordblock/KeywordBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588411473642</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add Update_Checker v1.6.0">
+      <created>1588412359677</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1588412359677</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -132,17 +138,18 @@
     <MESSAGE value="Supplementary file" />
     <MESSAGE value="overwrite detection" />
     <MESSAGE value="Support auto mute and detect other command" />
-    <option name="LAST_COMMIT_MESSAGE" value="Support auto mute and detect other command" />
+    <MESSAGE value="Add Update_Checker v1.6.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Update_Checker v1.6.0" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="275" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1588407599965">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588407599965" />
-    <state x="579" y="113" key="CommitChangelistDialog2" timestamp="1588411472682">
+    <state x="579" y="113" key="CommitChangelistDialog2" timestamp="1588412373675">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="579" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588411472682" />
+    <state x="579" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588412373675" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1588390961981">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -163,10 +170,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="161" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588412297837" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1588397177206">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1588412379448">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588397177206" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588412379448" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1588403619894">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

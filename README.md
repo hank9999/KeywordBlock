@@ -143,6 +143,8 @@ MIT License
 ### 配置
 ```yaml
 # 主要功能的禁用与启用
+# 更改 detect | detect_other 配置需要重载插件而不是重载配置
+# 可以通过重启服务器或者plugman reload实现
 function:
   # 公屏聊天转发
   detect: true
