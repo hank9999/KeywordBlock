@@ -1,4 +1,4 @@
-package com.github.hank9999.KeywordBlock;
+package com.github.hank9999.keywordblock;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

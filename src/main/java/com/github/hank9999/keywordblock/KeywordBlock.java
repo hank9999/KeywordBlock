@@ -1,10 +1,11 @@
-package com.github.hank9999.KeywordBlock;
+package com.github.hank9999.keywordblock;
 
+import org.bukkit.plugin.java.JavaPlugin;
+import com.github.hank9999.keywordblock.ChatListener;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
-
 public final class KeywordBlock extends JavaPlugin {
 
     public static KeywordBlock plugin;
@@ -20,7 +21,7 @@ public final class KeywordBlock extends JavaPlugin {
         saveDefaultConfig();
         reloadConfig();
         getLogger().info(ChatColor.BLUE + "Keywoord Plugin Enable");
-        getLogger().info(ChatColor.GOLD + "Version v1.4.4");
+        getLogger().info(ChatColor.GOLD + "Version v" + getDescription().getVersion());
 
         if (getConfig().getBoolean("function.detect")) {
             getServer().getPluginManager().registerEvents(new ChatListener(), this);
