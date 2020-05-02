@@ -146,9 +146,9 @@ MIT License
 # 更改 detect | detect_other 配置需要重载插件而不是重载配置
 # 可以通过重启服务器或者plugman reload实现
 function:
-  # 公屏聊天转发
+  # 公屏聊天检测
   detect: true
-  # 消息转发
+  # 消息广播
   admin-broadcast: true
   # 自动禁言
   mute: enable
