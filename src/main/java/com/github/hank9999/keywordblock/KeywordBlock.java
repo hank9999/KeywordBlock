@@ -1,11 +1,11 @@
 package com.github.hank9999.keywordblock;
 
-import org.bukkit.plugin.java.JavaPlugin;
-import com.github.hank9999.keywordblock.ChatListener;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
+import java.util.logging.Logger;
+
 public final class KeywordBlock extends JavaPlugin {
 
     public static KeywordBlock plugin;
@@ -20,8 +20,6 @@ public final class KeywordBlock extends JavaPlugin {
         plugin = this;
         saveDefaultConfig();
         reloadConfig();
-        getLogger().info(ChatColor.BLUE + "Keywoord Plugin Enable");
-        getLogger().info(ChatColor.GOLD + "Version v" + getDescription().getVersion());
 
         if (getConfig().getBoolean("function.detect")) {
             getServer().getPluginManager().registerEvents(new ChatListener(), this);
@@ -32,7 +30,15 @@ public final class KeywordBlock extends JavaPlugin {
 
         Objects.requireNonNull(getServer().getPluginCommand("keywordblock")).setExecutor(new KeywordBlock_Command());
         Objects.requireNonNull(getServer().getPluginCommand("keywordblock")).setTabCompleter(new KeywordBlock_Command());
+        try {
+            MetricsLite metrics = new MetricsLite(this, 7376);
+            getLogger().info(ChatColor.GOLD + "bStats Metrics Enable");
+        } catch (Exception exception) {
+            getLogger().warning("An error occurred while enabling bStats Metrics!");
+        }
 
+        getLogger().info(ChatColor.BLUE + "Keywoord Plugin Enable");
+        getLogger().info(ChatColor.GOLD + "Version v" + getDescription().getVersion());
     }
 
     @Override
