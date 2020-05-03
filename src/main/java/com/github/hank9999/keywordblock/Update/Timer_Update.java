@@ -29,7 +29,7 @@ public class Timer_Update {
     }
 
     public void Update_Check() {
-        new Update_Checker(KeywordBlock.plugin, 78091).getVersion(version -> {
+        new Update_Checker(KeywordBlock.plugin).getVersion(version -> {
             if (("v" + KeywordBlock.plugin.getDescription().getVersion()).equalsIgnoreCase(version)) {
                 if (is_first) {
                     KeywordBlock.plugin.getLogger().info(ChatColor.AQUA + "No new update available.");
