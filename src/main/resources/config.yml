@@ -16,6 +16,7 @@ message:
 
 mute:
   times: 3
+  keepptime: 3600
   command: 'mute %player% 30min Please mind your words'
   message:
     - '&2[&dKeywordBlock&2] &cYou were muted. Please mind your words.'

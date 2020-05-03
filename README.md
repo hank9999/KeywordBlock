@@ -59,6 +59,8 @@ message:
 mute:
   # After how many times, mute
   times: 3
+  # times log keep time (seconds)
+  keeptime: 3600
   # mute commnd
   command: 'mute %player% 30min Please mind your words'
   # mute message
@@ -172,6 +174,8 @@ message:
 mute:
   # 多少次之后禁言
   times: 3
+  # 违禁词次数记录保留时间 (秒)
+  keeptime: 3600
   # 执行指令
   command: 'mute %player% 30min 注意文明用语'
   message:

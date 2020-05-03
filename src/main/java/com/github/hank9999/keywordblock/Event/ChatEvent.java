@@ -91,7 +91,20 @@ public class ChatEvent implements Listener {
                         }
                         KeywordBlock.plugin.times.remove(username);
                     }
+                    if (KeywordBlock.plugin.say_time.isEmpty()) {
+                        KeywordBlock.plugin.say_time.put(username, (System.currentTimeMillis() / 1000));
+                        break;
+                    }
+                    if (KeywordBlock.plugin.say_time.get(username) == null) {
+                        KeywordBlock.plugin.say_time.put(username, (System.currentTimeMillis() / 1000));
+                        break;
+                    }
                     break;
+                }
+            }
+            if (KeywordBlock.plugin.say_time.get(username) != null) {
+                if (((System.currentTimeMillis() - KeywordBlock.plugin.say_time.get(username)) / 1000) >= KeywordBlock.plugin.getConfig().getLong("mute.keeptime")) {
+                    KeywordBlock.plugin.say_time.remove(username);
                 }
             }
         }

@@ -17,6 +17,7 @@ public final class KeywordBlock extends JavaPlugin {
 
     public static KeywordBlock plugin;
     public Map<String, AtomicInteger> times = new HashMap<>();
+    public Map<String, Long> say_time = new HashMap<>();
 
     @Override
     public void onLoad() {

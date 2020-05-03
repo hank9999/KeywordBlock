@@ -21,6 +21,7 @@ public class CommandPreprocessEvent implements Listener {
             return;
         }
         if (!e.isCancelled()) {
+            String username = player.getName();
             String pcommand = e.getMessage();
             for (String lcommand : KeywordBlock.plugin.getConfig().getStringList("detect_other.command")) {
                 if (pcommand.indexOf(lcommand) == 0) {
@@ -28,7 +29,6 @@ public class CommandPreprocessEvent implements Listener {
                     for (Player p : KeywordBlock.plugin.getServer().getOnlinePlayers()) {
                         m1 = m1.replace(p.getName(), "");
                     }
-                    String username = player.getName();
                     String text = ChatColor.stripColor(m1.trim());
                     String text_low_source = text.toLowerCase();
                     String text_low = text_low_source.replaceAll(" ", "");
@@ -92,10 +92,23 @@ public class CommandPreprocessEvent implements Listener {
                                 }
                                 KeywordBlock.plugin.times.remove(username);
                             }
+                            if (KeywordBlock.plugin.say_time.isEmpty()) {
+                                KeywordBlock.plugin.say_time.put(username, (System.currentTimeMillis() / 1000));
+                                break;
+                            }
+                            if (KeywordBlock.plugin.say_time.get(username) == null) {
+                                KeywordBlock.plugin.say_time.put(username, (System.currentTimeMillis() / 1000));
+                                break;
+                            }
                             break;
                         }
                     }
                     break;
+                }
+            }
+            if (KeywordBlock.plugin.say_time.get(username) != null) {
+                if (((System.currentTimeMillis() - KeywordBlock.plugin.say_time.get(username)) / 1000) >= KeywordBlock.plugin.getConfig().getLong("mute.keeptime")) {
+                    KeywordBlock.plugin.say_time.remove(username);
                 }
             }
         }
