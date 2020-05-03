@@ -3,19 +3,23 @@ package com.github.hank9999.keywordblock.Update;
 import com.github.hank9999.keywordblock.KeywordBlock;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.plugin.Plugin;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
+
 public class Timer_Update {
     private boolean is_first = true;
+    private Plugin plugin;
 
     public Timer_Update() {
+        this.plugin = KeywordBlock.plugin;
         final Timer timer = new Timer(true); // We use a timer cause the Bukkit scheduler is affected by server lags
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                if (!KeywordBlock.plugin.isEnabled()) { // Plugin was disabled
+                if (!plugin.isEnabled()) { // Plugin was disabled
                     timer.cancel();
                     return;
                 }
