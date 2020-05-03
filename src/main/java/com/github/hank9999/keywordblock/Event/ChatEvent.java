@@ -1,7 +1,7 @@
 package com.github.hank9999.keywordblock.Event;
 
 import com.github.hank9999.keywordblock.KeywordBlock;
-import com.github.hank9999.keywordblock.Lib;
+import com.github.hank9999.keywordblock.Libs.Lib;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

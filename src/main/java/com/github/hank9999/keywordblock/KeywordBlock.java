@@ -1,15 +1,16 @@
 package com.github.hank9999.keywordblock;
 
+import com.github.hank9999.keywordblock.Commands.Main_Command;
 import com.github.hank9999.keywordblock.Event.ChatEvent;
 import com.github.hank9999.keywordblock.Event.CommandPreprocessEvent;
+import com.github.hank9999.keywordblock.Update.Timer_Update;
+import com.github.hank9999.keywordblock.bStats.MetricsLite;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Timer;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class KeywordBlock extends JavaPlugin {
@@ -41,8 +42,8 @@ public final class KeywordBlock extends JavaPlugin {
             getLogger().info(ChatColor.GOLD + "Other Command Disable");
         }
 
-        Objects.requireNonNull(getServer().getPluginCommand("keywordblock")).setExecutor(new KeywordBlock_Command());
-        Objects.requireNonNull(getServer().getPluginCommand("keywordblock")).setTabCompleter(new KeywordBlock_Command());
+        Objects.requireNonNull(getServer().getPluginCommand("keywordblock")).setExecutor(new Main_Command());
+        Objects.requireNonNull(getServer().getPluginCommand("keywordblock")).setTabCompleter(new Main_Command());
         try {
             MetricsLite metrics = new MetricsLite(this, 7376);
             getLogger().info(ChatColor.GOLD + "bStats Metrics Enable");
@@ -53,14 +54,7 @@ public final class KeywordBlock extends JavaPlugin {
         getLogger().info(ChatColor.BLUE + "Keywoord Plugin Enable");
         getLogger().info(ChatColor.GOLD + "Version v" + getDescription().getVersion());
 
-        new Update_Checker(this, 78091).getVersion(version -> {
-            if (("v" + this.getDescription().getVersion()).equalsIgnoreCase(version)) {
-                getLogger().info(ChatColor.AQUA + "There is not a new update available.");
-            } else {
-                getLogger().info(ChatColor.AQUA + "There is a new update " + version + " available.");
-                getLogger().info(ChatColor.AQUA + "See it in https://www.spigotmc.org/resources/keywordblock.78091/");
-            }
-        });
+        new Timer_Update();
     }
 
     @Override

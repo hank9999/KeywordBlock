@@ -49,66 +49,66 @@ function:
 message:
   broadcast:
     admin:
-      - "&2[&dKeywordBlock&2] &9%player_name% &btry to send blocked word &c%player_message%"
+      - '&2[&dKeywordBlock&2] &9%player_name% &btry to send blocked word &c%player_message%'
   warn:
     player:
-      - "&2[&dKeywordBlock&2] &c%player_message% include blocked word"
-      - "&2[&dKeywordBlock&2] &cDo not try to send blocked word"
+      - '&2[&dKeywordBlock&2] &c%player_message% include blocked word'
+      - '&2[&dKeywordBlock&2] &cDo not try to send blocked word'
 
 # Mute
 mute:
   # After how many times, mute
   times: 3
   # mute commnd
-  command: "mute %player% 30min Please mind your words"
+  command: 'mute %player% 30min Please mind your words'
   # mute message
   message:
-    - "&2[&dKeywordBlock&2] &cYou were muted. Please mind your words."
+    - '&2[&dKeywordBlock&2] &cYou were muted. Please mind your words.'
 
 # detect other command
 detect_other:
   # command list
   command:
-    - "/tell"
-    - "/msg"
-    - "/t"
-    - "/r"
+    - '/tell'
+    - '/msg'
+    - '/t'
+    - '/r'
 
 # keywordblock commands language
 command_lang:
   # plugin name
-  keywordblock_name: "&2[&dKeywordBlock&2]"
+  keywordblock_name: '&2[&dKeywordBlock&2]'
   help:
-    - "&rUse &7/keywordblock help &rto get help"
-    - "&rUse &7/keywordblock reload &rto reload"
-    - "&rUse &7/keywordblock list &rto get list"
-    - "&rUse &7/keywordblock add <keyword> &rto add"
-    - "&rUse &7/keywordblock del <keyword> &rto del"
+    - '&rUse &7/keywordblock help &rto get help'
+    - '&rUse &7/keywordblock reload &rto reload'
+    - '&rUse &7/keywordblock list &rto get list'
+    - '&rUse &7/keywordblock add <keyword> &rto add'
+    - '&rUse &7/keywordblock del <keyword> &rto del'
   reload:
-    - "&rReload Config"
+    - '&rReload Config'
   list:
     prefix:
-      - "&rKeyword List:"
+      - '&rKeyword List:'
     empty:
-      - "&3Null"
+      - '&3Null'
   add:
     without_key:
-      - "&rPlease add with keyword"
+      - '&rPlease add with keyword'
     exists:
-      - "&rThis keyword already exists"
+      - '&rThis keyword already exists'
     success:
-      - "&radd a keyword"
+      - '&radd a keyword'
   del:
     without_key:
-      - "&rPlease del with keyword"
+      - '&rPlease del with keyword'
     not_exist:
-      - "&rThis keyword is not exist"
+      - '&rThis keyword is not exist'
     success:
-      - "&rdel a keyword"
+      - '&rdel a keyword'
   unknown:
-    - "&cUnknown Command"
+    - '&cUnknown Command'
   no_perm:
-    - "&r&cYou do not have permission to use this command"
+    - '&r&cYou do not have permission to use this command'
 
 # Keyword list
 words: []
@@ -173,17 +173,17 @@ mute:
   # 多少次之后禁言
   times: 3
   # 执行指令
-  command: "mute %player% 30min 注意文明用语"
+  command: 'mute %player% 30min 注意文明用语'
   message:
-    - "&2[&d关键词屏蔽&2] &c你被禁言了 请注意文明用语"
+    - '&2[&d关键词屏蔽&2] &c你被禁言了 请注意文明用语'
 
 # 检测其他指令
 detect_other:
   command:
-  - "/tell"
-  - "/msg"
-  - "/t"
-  - "/r"
+  - '/tell'
+  - '/msg'
+  - '/t'
+  - '/r'
 
 # 指令返回的消息
 command_lang:

@@ -1,4 +1,4 @@
-package com.github.hank9999.keywordblock;
+package com.github.hank9999.keywordblock.bStats;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

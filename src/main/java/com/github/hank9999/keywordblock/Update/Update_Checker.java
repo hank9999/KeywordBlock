@@ -1,4 +1,4 @@
-package com.github.hank9999.keywordblock;
+package com.github.hank9999.keywordblock.Update;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

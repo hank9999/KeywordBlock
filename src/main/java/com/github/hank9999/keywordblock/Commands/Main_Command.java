@@ -1,5 +1,7 @@
-package com.github.hank9999.keywordblock;
+package com.github.hank9999.keywordblock.Commands;
 
+import com.github.hank9999.keywordblock.KeywordBlock;
+import com.github.hank9999.keywordblock.Libs.Lib;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -9,21 +11,23 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class KeywordBlock_Command implements TabExecutor {
+public class Main_Command implements TabExecutor {
 
-    private String[] Commands = {"help", "reload", "list", "add", "del"};
+    private final String[] Commands = {"help", "reload", "list", "add", "del"};
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (command.getName().equalsIgnoreCase("keywordblock")) {
             String keywordblock_name = KeywordBlock.plugin.getConfig().getString("command_lang.keywordblock_name");
+            if (strings.length == 0) {
+                commandSender.sendMessage(Lib.color_translate("====================="));
+                commandSender.sendMessage(Lib.color_translate("     &2[&dKeywordBlock&2]"));
+                commandSender.sendMessage(Lib.color_translate("      &bVersion: &6v" + KeywordBlock.plugin.getDescription().getVersion()));
+                commandSender.sendMessage(Lib.color_translate("    &3Author: &4hank9999"));
+                commandSender.sendMessage(Lib.color_translate("====================="));
+                return true;
+            }
             if (commandSender.hasPermission("KeywordBlock.admin")) {
-                if (strings.length == 0) {
-                    for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.help")) {
-                        commandSender.sendMessage(Lib.color_translate(keywordblock_name + " " + message));
-                    }
-                    return true;
-                }
                 if (strings[0].equalsIgnoreCase("help")) {
                     for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.help")) {
                         commandSender.sendMessage(Lib.color_translate(keywordblock_name + " " + message));
