@@ -4,6 +4,7 @@ function:
   mute: enable
   detect_other: true
   bypass: true
+  keeptime: true
 
 message:
   broadcast:

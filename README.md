@@ -44,6 +44,8 @@ function:
   detect_other: true
   # admin bypass
   bypass: true
+  # clean player keyword times log
+  keeptime: true
 
 # Message (not include mute)
 message:
@@ -158,6 +160,8 @@ function:
   detect_other: true
   # 管理不被检测
   bypass: false
+  # 清理玩家关键词记录
+  keeptime: true
 
 # 消息 (不包含自动禁言)
 message:
