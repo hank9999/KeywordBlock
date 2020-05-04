@@ -57,8 +57,8 @@ public class CommandPreprocessEvent implements Listener {
                             + key_text_replaceall_no.replaceAll("[^a-zA-Z]", "") + " "
                             + key_text_replaceall_no.replaceAll("[^a-zA-Z0-9]", "") + " "
                             + key_text_replaceall_no.replaceAll("[^\\u4E00-\\u9FA5]", "") + " "
-                            + key_text_c.replaceAll("[\\p{P}+~$`^=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！…*丶—【】，；‘：”“’]", "") + " "
-                            + key_text_c_no.replaceAll("[\\p{P}+~$`^=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！…*丶—【】，；‘：”“’]", "");
+                            + key_text_c.replaceAll("[\\p{P}+~:$`^=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！…*丶—【】，；‘：”“’]", "") + " "
+                            + key_text_c_no.replaceAll("[\\p{P}+~:$`^=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！…*丶—【】，；‘：”“’]", "");
 
                     for (String keyword1 : KeywordBlock.plugin.getConfig().getStringList("words")) {
                         String keyword2 = keyword1.toLowerCase();
@@ -69,7 +69,7 @@ public class CommandPreprocessEvent implements Listener {
                         Matcher m01 = p01.matcher(all);
                         Pattern p02 = Pattern.compile(keyword2);
                         Matcher m02 = p02.matcher(all);
-                        if (m01.lookingAt() || m02.lookingAt()) {
+                        if (m01.lookingAt() || m02.lookingAt() || all.contains(keyword2)) {
                             e.setCancelled(true);
                             for (String warn_message : KeywordBlock.plugin.getConfig().getStringList("message.warn.player")) {
                                 player.sendMessage(Lib.color_translate(warn_message.replaceAll("%player_name%", username).replaceAll("%player_message%", text)));

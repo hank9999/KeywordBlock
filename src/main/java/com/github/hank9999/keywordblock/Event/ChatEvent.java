@@ -50,8 +50,8 @@ public class ChatEvent implements Listener {
                     + key_text_replaceall_no.replaceAll("[^a-zA-Z]", "") + " "
                     + key_text_replaceall_no.replaceAll("[^a-zA-Z0-9]", "") + " "
                     + key_text_replaceall_no.replaceAll("[^\\u4E00-\\u9FA5]", "") + " "
-                    + key_text_c.replaceAll("[\\p{P}+~$`^=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！…*丶—【】，；‘：”“’]", "") + " "
-                    + key_text_c_no.replaceAll("[\\p{P}+~$`^=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！…*丶—【】，；‘：”“’]", "");
+                    + key_text_c.replaceAll("[\\p{P}+~$`^:=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！…*丶—【】，；‘：”“’]", "") + " "
+                    + key_text_c_no.replaceAll("[\\p{P}+:~$`^=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！…*丶—【】，；‘：”“’]", "");
 
             for (String keyword1 : KeywordBlock.plugin.getConfig().getStringList("words")) {
                 String keyword2 = keyword1.toLowerCase();
@@ -62,7 +62,7 @@ public class ChatEvent implements Listener {
                 Matcher m1 = p1.matcher(all);
                 Pattern p2 = Pattern.compile(keyword2);
                 Matcher m2 = p2.matcher(all);
-                if (m1.lookingAt() || m2.lookingAt()) {
+                if (m1.lookingAt() || m2.lookingAt() || all.contains(keyword2)) {
                     event.setCancelled(true);
                     for (String warn_message : KeywordBlock.plugin.getConfig().getStringList("message.warn.player")) {
                         player.sendMessage(Lib.color_translate(warn_message.replaceAll("%player_name%", username).replaceAll("%player_message%", text)));
