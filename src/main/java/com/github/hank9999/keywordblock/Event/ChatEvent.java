@@ -11,6 +11,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ChatEvent implements Listener {
 
@@ -31,7 +33,8 @@ public class ChatEvent implements Listener {
             String key_text_a_no = text_low.replaceAll("&[0-9]|&[a-z]", "").replaceAll("\\\\[a-z]|\\\\[A-Z]|/[A-Z]|/[a-z]", "");
             String key_text_c_no = key_text_a_no.replaceAll("%[0-9]|%[a-z]", "");
             String key_text_replaceall_no = key_text_c_no.replaceAll("[^a-zA-Z0-9\\u4E00-\\u9FA5]", "");
-            String all = text_low_source + " "
+            String all = text + " "
+                    + text_low_source + " "
                     + text_low + " "
                     + key_text_a + " "
                     + text_low.replaceAll("%[0-9]|%[a-z]", "") + " "
@@ -50,12 +53,16 @@ public class ChatEvent implements Listener {
                     + key_text_c.replaceAll("[\\p{P}+~$`^=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！…*丶—【】，；‘：”“’]", "") + " "
                     + key_text_c_no.replaceAll("[\\p{P}+~$`^=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！…*丶—【】，；‘：”“’]", "");
 
-            for (String keyword : KeywordBlock.plugin.getConfig().getStringList("words")) {
-                keyword = keyword.toLowerCase();
-                if (keyword.equalsIgnoreCase("")) {
+            for (String keyword1 : KeywordBlock.plugin.getConfig().getStringList("words")) {
+                String keyword2 = keyword1.toLowerCase();
+                if (keyword1.equalsIgnoreCase("")) {
                     continue;
                 }
-                if (all.contains(keyword)) {
+                Pattern p1 = Pattern.compile(keyword1);
+                Matcher m1 = p1.matcher(all);
+                Pattern p2 = Pattern.compile(keyword2);
+                Matcher m2 = p2.matcher(all);
+                if (m1.lookingAt() || m2.lookingAt()) {
                     event.setCancelled(true);
                     for (String warn_message : KeywordBlock.plugin.getConfig().getStringList("message.warn.player")) {
                         player.sendMessage(Lib.color_translate(warn_message.replaceAll("%player_name%", username).replaceAll("%player_message%", text)));
