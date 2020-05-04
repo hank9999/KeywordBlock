@@ -110,7 +110,7 @@ public class ChatEvent implements Listener {
                 }
             }
             if (KeywordBlock.plugin.say_time.get(username) != null && KeywordBlock.plugin.getConfig().getBoolean("function.keeptime")) {
-                if (((System.currentTimeMillis() - KeywordBlock.plugin.say_time.get(username)) / 1000) >= KeywordBlock.plugin.getConfig().getLong("mute.keeptime")) {
+                if (((System.currentTimeMillis() / 1000) - KeywordBlock.plugin.say_time.get(username)) >= KeywordBlock.plugin.getConfig().getLong("mute.keeptime")) {
                     KeywordBlock.plugin.say_time.remove(username);
                 }
             }
