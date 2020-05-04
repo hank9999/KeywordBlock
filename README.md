@@ -15,6 +15,7 @@ Download latest releases to your server and reboot or plugman load
  - Reminder message customization
  - Auto mute (Need to install other mute plugin)
  - Detect keyword in commands
+ - Regex Support
 
 ### Permission
  - KeywordBlock.admin  
@@ -131,6 +132,7 @@ MIT License
  - 支持消息自定义
  - 自动禁言 (需要安装其他mute插件)
  - 检测指令里的关键词
+ - 正则表达式支持
 
 ### 权限组
  - KeywordBlock.admin  
