@@ -26,7 +26,7 @@ public class CommandPreprocessEvent implements Listener {
             String username = player.getName();
             String pcommand = e.getMessage();
             for (String lcommand : KeywordBlock.plugin.getConfig().getStringList("detect_other.command")) {
-                if (pcommand.indexOf(lcommand) == 0) {
+                if (pcommand.toLowerCase().indexOf(lcommand.toLowerCase()) == 0) {
                     String m1 = pcommand.replace(lcommand, "");
                     for (Player p : KeywordBlock.plugin.getServer().getOnlinePlayers()) {
                         m1 = m1.replace(p.getName(), "");
