@@ -84,14 +84,16 @@ public class ChatEvent implements Listener {
                             new BukkitRunnable() {
                                 @Override
                                 public void run() {
-                                    KeywordBlock.plugin.getServer().dispatchCommand(
-                                            KeywordBlock.plugin.getServer().getConsoleSender(),
-                                            Objects.requireNonNull(
-                                                    Objects.requireNonNull(
-                                                            KeywordBlock.plugin.getConfig().getString("mute.command")
-                                                    ).replaceAll("%player%", username)
-                                            )
-                                    );
+                                    for (String command : KeywordBlock.plugin.getConfig().getStringList("mute.command")) {
+                                        KeywordBlock.plugin.getServer().dispatchCommand(
+                                                KeywordBlock.plugin.getServer().getConsoleSender(),
+                                                Objects.requireNonNull(
+                                                        Objects.requireNonNull(
+                                                                command
+                                                        ).replaceAll("%player%", username)
+                                                )
+                                        );
+                                    }
                                 }
                             }.runTask(KeywordBlock.plugin);
 
