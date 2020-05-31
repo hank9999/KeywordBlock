@@ -64,8 +64,9 @@ mute:
   times: 3
   # times log keep time (seconds)
   keeptime: 3600
-  # mute commnd
-  command: 'mute %player% 30min Please mind your words'
+  # mute commnds
+  command: 
+    - 'mute %player% 30min Please mind your words'
   # mute message
   message:
     - '&2[&dKeywordBlock&2] &cYou were muted. Please mind your words.'
@@ -169,12 +170,12 @@ function:
 message:
   broadcast:
     admin:
-    - '&2[&d关键词屏蔽&2] &9%player_name% &b试图发送违禁词语 &c%player_message%'
+      - '&2[&d关键词屏蔽&2] &9%player_name% &b试图发送违禁词语 &c%player_message%'
 
   warn:
     player:
-    - '&2[&d关键词屏蔽&2] &c%player_message% 包含违禁词语!'
-    - '&2[&d关键词屏蔽&2] &c请不要尝试发送违禁词语!'
+      - '&2[&d关键词屏蔽&2] &c%player_message% 包含违禁词语!'
+      - '&2[&d关键词屏蔽&2] &c请不要尝试发送违禁词语!'
 
 # 自动禁言
 mute:
@@ -183,53 +184,54 @@ mute:
   # 违禁词次数记录保留时间 (秒)
   keeptime: 3600
   # 执行指令
-  command: 'mute %player% 30min 注意文明用语'
+  command: 
+    - 'mute %player% 30min 注意文明用语'
   message:
     - '&2[&d关键词屏蔽&2] &c你被禁言了 请注意文明用语'
 
 # 检测其他指令
 detect_other:
   command:
-  - '/tell'
-  - '/msg'
-  - '/t'
-  - '/r'
+    - '/tell'
+    - '/msg'
+    - '/t'
+    - '/r'
 
 # 指令返回的消息
 command_lang:
   # 插件名称
   keywordblock_name: '&2[&d关键词屏蔽&2]'
   help:
-  - '&r使用 &7/keywordblock help &r获取帮助'
-  - '&r使用 &7/keywordblock reload &r重载配置'
-  - '&r使用 &7/keywordblock list &r获取关键词列表'
-  - '&r使用 &7/keywordblock add <keyword> &r添加关键词'
-  - '&r使用 &7/keywordblock del <keyword> &r删除关键词'
+    - '&r使用 &7/keywordblock help &r获取帮助'
+    - '&r使用 &7/keywordblock reload &r重载配置'
+    - '&r使用 &7/keywordblock list &r获取关键词列表'
+    - '&r使用 &7/keywordblock add <keyword> &r添加关键词'
+    - '&r使用 &7/keywordblock del <keyword> &r删除关键词'
   reload:
-  - '&r重载配置完成'
+    - '&r重载配置完成'
   list:
     prefix:
-    - '&r关键词列表:'
+      - '&r关键词列表:'
     empty:
-    - '&3无'
+      - '&3无'
   add:
     without_key:
-    - '&r缺少关键词'
+      - '&r缺少关键词'
     exists:
-    - '&r这个关键词已存在'
+      - '&r这个关键词已存在'
     success:
-    - '&r成功添加了关键词'
+      - '&r成功添加了关键词'
   del:
     without_key:
-    - '&r缺少关键词'
+      - '&r缺少关键词'
     not_exist:
-    - '&r这个关键词不存在'
+      - '&r这个关键词不存在'
     success:
-    - '&r成功删除了关键词'
+      - '&r成功删除了关键词'
   unknown:
-  - '&c未知指令'
+    - '&c未知指令'
   no_perm:
-  - '&r&c你没有权限使用该指令!'
+    - '&r&c你没有权限使用该指令!'
 
 # 关键词列表
 words: []
