@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b02be900-49f9-427b-91bc-cefb1d71ef1c" name="默认更改列表" comment="fix bug and finish issue#1">
+    <list default="true" id="b02be900-49f9-427b-91bc-cefb1d71ef1c" name="默认更改列表" comment="test workflows">
       <change beforePath="$PROJECT_DIR$/.github/workflows/maven.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/maven.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590929661330</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="test workflows">
+      <created>1592060092151</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1592060092151</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -272,7 +278,8 @@
     <MESSAGE value="fix toggle case" />
     <MESSAGE value="bump version" />
     <MESSAGE value="fix bug and finish issue#1" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug and finish issue#1" />
+    <MESSAGE value="test workflows" />
+    <option name="LAST_COMMIT_MESSAGE" value="test workflows" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="275" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1588407599965">
@@ -283,10 +290,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="796" y="320" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588502036355" />
-    <state x="579" y="90" width="804" height="920" key="CommitChangelistDialog2" timestamp="1590929667937">
+    <state x="579" y="90" width="804" height="920" key="CommitChangelistDialog2" timestamp="1592060091380">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="579" y="90" width="804" height="920" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590929667937" />
+    <state x="579" y="90" width="804" height="920" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1592060091380" />
     <state x="205" y="112" key="DiffContextDialog" timestamp="1588663633195">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
