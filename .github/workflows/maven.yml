@@ -31,5 +31,5 @@ jobs:
     - name: Upload Artifact
       uses: actions/upload-artifact@v2-preview
       with:
-        name: KeywordBlock-Dev-${{project.version}}
-        path: target/KeywordBlock-${{project.version}}.jar
+        name: KeywordBlock-Dev
+        path: target/KeywordBlock-*.jar
