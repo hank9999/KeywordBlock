@@ -14,10 +14,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ChatEvent implements Listener {
+final public class ChatEvent implements Listener {
 
     @EventHandler
-    public void onChat(AsyncPlayerChatEvent event) {
+    final public void onChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
         if (player.hasPermission("KeywordBlock.admin") && KeywordBlock.plugin.getConfig().getBoolean("function.bypass")) {
             return;
@@ -27,42 +27,27 @@ public class ChatEvent implements Listener {
             String text = ChatColor.stripColor(event.getMessage().trim());
             String text_low_source = text.toLowerCase();
             String text_low = text_low_source.replaceAll(" ", "");
-            String key_text_a = text_low.replaceAll("&[0-9]|&[a-z]", "");
-            String key_text_c = key_text_a.replaceAll("%[0-9]|%[a-z]", "");
-            String key_text_replaceall = key_text_c.replaceAll("[^a-zA-Z0-9\\u4E00-\\u9FA5]", "");
-            String key_text_a_no = text_low.replaceAll("&[0-9]|&[a-z]", "").replaceAll("\\\\[a-z]|\\\\[A-Z]|/[A-Z]|/[a-z]", "");
-            String key_text_c_no = key_text_a_no.replaceAll("%[0-9]|%[a-z]", "");
-            String key_text_replaceall_no = key_text_c_no.replaceAll("[^a-zA-Z0-9\\u4E00-\\u9FA5]", "");
-            String all = text + " "
+            String all = (text + " "
                     + text_low_source + " "
                     + text_low + " "
-                    + key_text_a + " "
+                    + text_low.replaceAll("[^a-zA-Z]", "") + " "
                     + text_low.replaceAll("%[0-9]|%[a-z]", "") + " "
-                    + key_text_c + " "
-                    + key_text_replaceall + " "
-                    + key_text_replaceall.replaceAll("[^a-zA-Z]", "") + " "
-                    + key_text_replaceall.replaceAll("[^a-zA-Z0-9]", "") + " "
-                    + key_text_replaceall.replaceAll("[^\\u4E00-\\u9FA5]", "") + " "
-                    + key_text_a_no + " "
+                    + text_low.replaceAll("[^0-9]", "") + " "
+                    + text_low.replaceAll("[^\\u4E00-\\u9FA5]", "") + " "
+                    + text_low.replaceAll("[^a-zA-Z0-9]", "") + " "
                     + text_low.replaceAll("%[0-9]|%[a-z]", "").replaceAll("\\\\[a-z]|\\\\[A-Z]|/[A-Z]|/[a-z]", "") + " "
-                    + key_text_c_no + " "
-                    + key_text_replaceall_no + " "
-                    + key_text_replaceall_no.replaceAll("[^a-zA-Z]", "") + " "
-                    + key_text_replaceall_no.replaceAll("[^a-zA-Z0-9]", "") + " "
-                    + key_text_replaceall_no.replaceAll("[^\\u4E00-\\u9FA5]", "") + " "
-                    + key_text_c.replaceAll("[\\p{P}+~$`^:=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！…*丶—【】，；‘：”“’]", "") + " "
-                    + key_text_c_no.replaceAll("[\\p{P}+:~$`^=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！…*丶—【】，；‘：”“’]", "");
+                    + text_low.replaceAll("[\\p{P}+~$`^:=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！…*丶—【】，；‘：”“’]", "") + " "
+            );
 
             for (String keyword1 : KeywordBlock.plugin.getConfig().getStringList("words")) {
-                String keyword2 = keyword1.toLowerCase();
                 if (keyword1.equalsIgnoreCase("")) {
                     continue;
                 }
                 Pattern p1 = Pattern.compile(keyword1);
                 Matcher m1 = p1.matcher(all);
-                Pattern p2 = Pattern.compile(keyword2);
+                Pattern p2 = Pattern.compile(keyword1.toLowerCase());
                 Matcher m2 = p2.matcher(all);
-                if (m1.lookingAt() || m2.lookingAt() || all.contains(keyword2)) {
+                if (m1.lookingAt() || m2.lookingAt() || all.contains(keyword1.toLowerCase())) {
                     event.setCancelled(true);
                     for (String warn_message : KeywordBlock.plugin.getConfig().getStringList("message.warn.player")) {
                         player.sendMessage(Lib.color_translate(warn_message.replaceAll("%player_name%", username).replaceAll("%player_message%", text)));

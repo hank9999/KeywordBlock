@@ -9,7 +9,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class Timer_Update {
+final public class Timer_Update {
     private boolean is_first = true;
     private Plugin plugin;
 

@@ -20,12 +20,12 @@ public final class KeywordBlock extends JavaPlugin {
     public Map<String, Long> say_time = new HashMap<>();
 
     @Override
-    public void onLoad() {
+    final public void onLoad() {
         getLogger().info(ChatColor.BLUE + "Keywoord Plugin Load");
     }
 
     @Override
-    public void onEnable() {
+    final public void onEnable() {
         plugin = this;
         saveDefaultConfig();
         reloadConfig();
@@ -40,7 +40,7 @@ public final class KeywordBlock extends JavaPlugin {
             getServer().getPluginManager().registerEvents(new CommandPreprocessEvent(), this);
             getLogger().info(ChatColor.GOLD + "Other Command Check Enable");
         } else {
-            getLogger().info(ChatColor.GOLD + "Other Command Disable");
+            getLogger().info(ChatColor.GOLD + "Other Command Check Disable");
         }
 
         Objects.requireNonNull(getServer().getPluginCommand("keywordblock")).setExecutor(new Main_Command());
@@ -59,7 +59,7 @@ public final class KeywordBlock extends JavaPlugin {
     }
 
     @Override
-    public void onDisable() {
+    final public void onDisable() {
         plugin = null;
         getLogger().info(ChatColor.BLUE + "Keywoord Plugin Disable");
     }

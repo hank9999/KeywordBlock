@@ -14,10 +14,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CommandPreprocessEvent implements Listener {
+final public class CommandPreprocessEvent implements Listener {
 
     @EventHandler(priority = EventPriority.LOW)
-    public void onCommands(PlayerCommandPreprocessEvent e) {
+    final public void onCommands(PlayerCommandPreprocessEvent e) {
         Player player = e.getPlayer();
         if (player.hasPermission("KeywordBlock.admin") && KeywordBlock.plugin.getConfig().getBoolean("function.bypass")) {
             return;
@@ -35,45 +35,30 @@ public class CommandPreprocessEvent implements Listener {
                     for (Player p : KeywordBlock.plugin.getServer().getOnlinePlayers()) {
                         m1 = m1.replace(p.getName().toLowerCase(), "");
                     }
-                    String text = ChatColor.stripColor(m1.trim());
+                    String text = ChatColor.stripColor(e.getMessage().trim());
                     String text_low_source = text.toLowerCase();
                     String text_low = text_low_source.replaceAll(" ", "");
-                    String key_text_a = text_low.replaceAll("&[0-9]|&[a-z]", "");
-                    String key_text_c = key_text_a.replaceAll("%[0-9]|%[a-z]", "");
-                    String key_text_replaceall = key_text_c.replaceAll("[^a-zA-Z0-9\\u4E00-\\u9FA5]", "");
-                    String key_text_a_no = text_low.replaceAll("&[0-9]|&[a-z]", "").replaceAll("\\\\[a-z]|\\\\[A-Z]|/[A-Z]|/[a-z]", "");
-                    String key_text_c_no = key_text_a_no.replaceAll("%[0-9]|%[a-z]", "");
-                    String key_text_replaceall_no = key_text_c_no.replaceAll("[^a-zA-Z0-9\\u4E00-\\u9FA5]", "");
-                    String all = text + " "
+                    String all = (text + " "
                             + text_low_source + " "
                             + text_low + " "
-                            + key_text_a + " "
+                            + text_low.replaceAll("[^a-zA-Z]", "") + " "
                             + text_low.replaceAll("%[0-9]|%[a-z]", "") + " "
-                            + key_text_c + " "
-                            + key_text_replaceall + " "
-                            + key_text_replaceall.replaceAll("[^a-zA-Z]", "") + " "
-                            + key_text_replaceall.replaceAll("[^a-zA-Z0-9]", "") + " "
-                            + key_text_replaceall.replaceAll("[^\\u4E00-\\u9FA5]", "") + " "
-                            + key_text_a_no + " "
+                            + text_low.replaceAll("[^0-9]", "") + " "
+                            + text_low.replaceAll("[^\\u4E00-\\u9FA5]", "") + " "
+                            + text_low.replaceAll("[^a-zA-Z0-9]", "") + " "
                             + text_low.replaceAll("%[0-9]|%[a-z]", "").replaceAll("\\\\[a-z]|\\\\[A-Z]|/[A-Z]|/[a-z]", "") + " "
-                            + key_text_c_no + " "
-                            + key_text_replaceall_no + " "
-                            + key_text_replaceall_no.replaceAll("[^a-zA-Z]", "") + " "
-                            + key_text_replaceall_no.replaceAll("[^a-zA-Z0-9]", "") + " "
-                            + key_text_replaceall_no.replaceAll("[^\\u4E00-\\u9FA5]", "") + " "
-                            + key_text_c.replaceAll("[\\p{P}+~:$`^=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！…*丶—【】，；‘：”“’]", "") + " "
-                            + key_text_c_no.replaceAll("[\\p{P}+~:$`^=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！…*丶—【】，；‘：”“’]", "");
+                            + text_low.replaceAll("[\\p{P}+~$`^:=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！…*丶—【】，；‘：”“’]", "") + " "
+                    );
 
                     for (String keyword1 : KeywordBlock.plugin.getConfig().getStringList("words")) {
-                        String keyword2 = keyword1.toLowerCase();
                         if (keyword1.equalsIgnoreCase("")) {
                             continue;
                         }
                         Pattern p01 = Pattern.compile(keyword1);
                         Matcher m01 = p01.matcher(all);
-                        Pattern p02 = Pattern.compile(keyword2);
+                        Pattern p02 = Pattern.compile(keyword1.toLowerCase());
                         Matcher m02 = p02.matcher(all);
-                        if (m01.lookingAt() || m02.lookingAt() || all.contains(keyword2)) {
+                        if (m01.lookingAt() || m02.lookingAt() || all.contains(keyword1.toLowerCase())) {
                             e.setCancelled(true);
                             for (String warn_message : KeywordBlock.plugin.getConfig().getStringList("message.warn.player")) {
                                 player.sendMessage(Lib.color_translate(warn_message.replaceAll("%player_name%", username).replaceAll("%player_message%", text)));

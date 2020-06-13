@@ -11,12 +11,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Main_Command implements TabExecutor {
+final public class Main_Command implements TabExecutor {
 
     private final String[] Commands = {"help", "reload", "list", "add", "del"};
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
+    final public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (command.getName().equalsIgnoreCase("keywordblock")) {
             String keywordblock_name = KeywordBlock.plugin.getConfig().getString("command_lang.keywordblock_name");
             if (strings.length == 0) {
@@ -125,7 +125,7 @@ public class Main_Command implements TabExecutor {
     }
 
     @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+    final public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 0) return Arrays.asList(Commands);
         if (args[0].equalsIgnoreCase("del") && args.length == 2) {
             return KeywordBlock.plugin.getConfig().getStringList("words");

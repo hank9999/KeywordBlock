@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Scanner;
 
-public class Update_Checker {
+final public class Update_Checker {
 
     private Plugin plugin;
 
