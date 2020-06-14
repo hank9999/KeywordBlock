@@ -38,27 +38,39 @@ final public class CommandPreprocessEvent implements Listener {
                     String text = ChatColor.stripColor(e.getMessage().trim());
                     String text_low_source = text.toLowerCase();
                     String text_low = text_low_source.replaceAll(" ", "");
-                    String all = (text + " "
-                            + text_low_source + " "
-                            + text_low + " "
-                            + text_low.replaceAll("[^a-zA-Z]", "") + " "
-                            + text_low.replaceAll("%[0-9]|%[a-z]", "") + " "
-                            + text_low.replaceAll("[^0-9]", "") + " "
-                            + text_low.replaceAll("[^\\u4E00-\\u9FA5]", "") + " "
-                            + text_low.replaceAll("[^a-zA-Z0-9]", "") + " "
-                            + text_low.replaceAll("%[0-9]|%[a-z]", "").replaceAll("\\\\[a-z]|\\\\[A-Z]|/[A-Z]|/[a-z]", "") + " "
-                            + text_low.replaceAll("[\\p{P}+~$`^:=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！…*丶—【】，；‘：”“’]", "") + " "
-                    );
+                    StringBuilder builder = new StringBuilder();
+                    builder.append(text);
+                    builder.append(" ");
+                    builder.append(text_low_source);
+                    builder.append(" ");
+                    builder.append(text_low);
+                    builder.append(" ");
+                    builder.append(text_low.replaceAll("[^a-zA-Z]", ""));
+                    builder.append(" ");
+                    builder.append(text_low.replaceAll("%[0-9]|%[a-z]", ""));
+                    builder.append(" ");
+                    builder.append(text_low.replaceAll("[^0-9]", ""));
+                    builder.append(" ");
+                    builder.append(text_low.replaceAll("[^\\u4E00-\\u9FA5]", ""));
+                    builder.append(" ");
+                    builder.append(text_low.replaceAll("[^a-zA-Z0-9]", ""));
+                    builder.append(" ");
+                    builder.append(text_low.replaceAll("%[0-9]|%[a-z]", "").replaceAll("\\\\[a-z]|\\\\[A-Z]|/[A-Z]|/[a-z]", ""));
+                    builder.append(" ");
+                    builder.append(text_low.replaceAll("[\\p{P}+~$`^:=./|<>?～｀＄＾＋。、？·｜()（）＜＞￥×{}&#%@!！…*丶—【】，；‘：”“’]", ""));
+                    builder.append(" ");
+                    String all = builder.toString();
 
                     for (String keyword1 : KeywordBlock.plugin.getConfig().getStringList("words")) {
                         if (keyword1.equalsIgnoreCase("")) {
                             continue;
                         }
+                        String keyword1_lowercase = keyword1.toLowerCase();
                         Pattern p01 = Pattern.compile(keyword1);
                         Matcher m01 = p01.matcher(all);
-                        Pattern p02 = Pattern.compile(keyword1.toLowerCase());
+                        Pattern p02 = Pattern.compile(keyword1_lowercase);
                         Matcher m02 = p02.matcher(all);
-                        if (m01.lookingAt() || m02.lookingAt() || all.contains(keyword1.toLowerCase())) {
+                        if (m01.lookingAt() || m02.lookingAt() || all.contains(keyword1_lowercase)) {
                             e.setCancelled(true);
                             for (String warn_message : KeywordBlock.plugin.getConfig().getStringList("message.warn.player")) {
                                 player.sendMessage(Lib.color_translate(warn_message.replaceAll("%player_name%", username).replaceAll("%player_message%", text)));
