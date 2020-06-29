@@ -8,6 +8,7 @@ import org.bukkit.command.TabExecutor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -126,11 +127,12 @@ final public class Main_Command implements TabExecutor {
 
     @Override
     final public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-        if (args.length == 0) return Arrays.asList(Commands);
         if (args[0].equalsIgnoreCase("del") && args.length == 2) {
             return KeywordBlock.plugin.getConfig().getStringList("words");
         }
-        if (args.length > 1) return new ArrayList<>();
+        if (args.length > 1) {
+            return Collections.emptyList();
+        }
         return Arrays.stream(Commands).filter(s -> s.startsWith(args[0])).collect(Collectors.toList());
     }
 }
