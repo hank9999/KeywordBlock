@@ -3,7 +3,7 @@ package com.github.hank9999.keywordblock;
 import com.github.hank9999.keywordblock.Commands.Main_Command;
 import com.github.hank9999.keywordblock.Event.ChatEvent;
 import com.github.hank9999.keywordblock.Event.CommandPreprocessEvent;
-import com.github.hank9999.keywordblock.Update.Timer_Update;
+import com.github.hank9999.keywordblock.Update.Updater;
 import com.github.hank9999.keywordblock.bStats.MetricsLite;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -55,7 +55,7 @@ public final class KeywordBlock extends JavaPlugin {
         getLogger().info(ChatColor.BLUE + "Keywoord Plugin Enable");
         getLogger().info(ChatColor.GOLD + "Version v" + getDescription().getVersion());
 
-        new Timer_Update();
+        new Updater();
     }
 
     @Override
