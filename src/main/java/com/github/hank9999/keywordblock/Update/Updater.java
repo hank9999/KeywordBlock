@@ -42,7 +42,8 @@ final public class Updater {
                     }
                 } else {
                     this.plugin.getLogger().info(ChatColor.AQUA + "A new update " + Response + " available!");
-                    this.plugin.getLogger().info(ChatColor.AQUA + "See it in https://github.com/hank9999/UseBlessingSkin/releases");
+                    this.plugin.getLogger().info(ChatColor.AQUA + "See it in https://github.com/hank9999/KeywordBlock");
+                    this.plugin.getLogger().info(ChatColor.AQUA + "Or See it in https://www.spigotmc.org/resources/keywordblock.78091/");
                 }
             } catch (Exception e) {
                 this.plugin.getLogger().info(ChatColor.AQUA + "Cannot look for updates: " + e.getMessage());
