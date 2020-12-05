@@ -22,12 +22,12 @@ Download latest releases to your server and reboot or plugman load
    - KeywordBlock's Admin
 
 ### Command
- - /keywordblock
- - /keywordblock help
- - /keywordblock reload
- - /keywordblock list
- - /keywordblock add <keyword>
- - /keywordblock del <keyword>
+ - /keywordblock(/kb)
+ - /keywordblock(/kb) help
+ - /keywordblock(/kb) reload
+ - /keywordblock(/kb) list
+ - /keywordblock(/kb) add <keyword>
+ - /keywordblock(/kb) del <keyword>
 
 ### Config
 ```yaml
@@ -85,11 +85,11 @@ command_lang:
   # plugin name
   keywordblock_name: '&2[&dKeywordBlock&2]'
   help:
-    - '&rUse &7/keywordblock help &rto get help'
-    - '&rUse &7/keywordblock reload &rto reload'
-    - '&rUse &7/keywordblock list &rto get list'
-    - '&rUse &7/keywordblock add <keyword> &rto add'
-    - '&rUse &7/keywordblock del <keyword> &rto del'
+    - '&rUse &7/keywordblock(/kb) help &rto get help'
+    - '&rUse &7/keywordblock(/kb) reload &rto reload'
+    - '&rUse &7/keywordblock(/kb) list &rto get list'
+    - '&rUse &7/keywordblock(/kb) add <keyword> &rto add'
+    - '&rUse &7/keywordblock(/kb) del <keyword> &rto del'
   reload:
     - '&rReload Config'
   list:
@@ -140,12 +140,12 @@ MIT License
    - KeywordBlock 管理员
 
 ### 指令
- - /keywordblock
- - /keywordblock help
- - /keywordblock reload
- - /keywordblock list
- - /keywordblock add <keyword>
- - /keywordblock del <keyword>
+ - /keywordblock(/kb)
+ - /keywordblock(/kb) help
+ - /keywordblock(/kb) reload
+ - /keywordblock(/kb) list
+ - /keywordblock(/kb) add <keyword>
+ - /keywordblock(/kb) del <keyword>
 
 ### 配置
 ```yaml
@@ -202,11 +202,11 @@ command_lang:
   # 插件名称
   keywordblock_name: '&2[&d关键词屏蔽&2]'
   help:
-    - '&r使用 &7/keywordblock help &r获取帮助'
-    - '&r使用 &7/keywordblock reload &r重载配置'
-    - '&r使用 &7/keywordblock list &r获取关键词列表'
-    - '&r使用 &7/keywordblock add <keyword> &r添加关键词'
-    - '&r使用 &7/keywordblock del <keyword> &r删除关键词'
+    - '&r使用 &7/keywordblock(/kb) help &r获取帮助'
+    - '&r使用 &7/keywordblock(/kb) reload &r重载配置'
+    - '&r使用 &7/keywordblock(/kb) list &r获取关键词列表'
+    - '&r使用 &7/keywordblock(/kb) add <keyword> &r添加关键词'
+    - '&r使用 &7/keywordblock(/kb) del <keyword> &r删除关键词'
   reload:
     - '&r重载配置完成'
   list:

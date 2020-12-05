@@ -33,11 +33,11 @@ detect_other:
 command_lang:
   keywordblock_name: '&2[&dKeywordBlock&2]'
   help:
-    - '&rUse &7/keywordblock help &rto get help'
-    - '&rUse &7/keywordblock reload &rto reload'
-    - '&rUse &7/keywordblock list &rto get list'
-    - '&rUse &7/keywordblock add <keyword> &rto add'
-    - '&rUse &7/keywordblock del <keyword> &rto del'
+    - '&rUse &7/keywordblock(/kb) help &rto get help'
+    - '&rUse &7/keywordblock(/kb) reload &rto reload'
+    - '&rUse &7/keywordblock(/kb) list &rto get list'
+    - '&rUse &7/keywordblock(/kb) add <keyword> &rto add'
+    - '&rUse &7/keywordblock(/kb) del <keyword> &rto del'
   reload:
     - '&rReload Config'
   list:
