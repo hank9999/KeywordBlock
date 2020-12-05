@@ -11,4 +11,5 @@ permissions:
 
 commands:
   keywordblock:
+    aliases: ['kb']
     description: KeywordBlock Main Command

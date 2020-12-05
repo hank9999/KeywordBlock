@@ -1,7 +1,7 @@
 package com.github.hank9999.keywordblock.Commands;
 
 import com.github.hank9999.keywordblock.KeywordBlock;
-import com.github.hank9999.keywordblock.Libs.Lib;
+import com.github.hank9999.keywordblock.Libs.Libs;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -18,37 +18,37 @@ final public class Main_Command implements TabExecutor {
 
     @Override
     final public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if (command.getName().equalsIgnoreCase("keywordblock")) {
+        if (command.getName().equalsIgnoreCase("keywordblock") || command.getName().equalsIgnoreCase("kb")) {
             String keywordblock_name = KeywordBlock.plugin.getConfig().getString("command_lang.keywordblock_name");
             if (strings.length == 0) {
-                commandSender.sendMessage(Lib.color_translate("====================="));
-                commandSender.sendMessage(Lib.color_translate("     &2[&dKeywordBlock&2]"));
-                commandSender.sendMessage(Lib.color_translate("      &bVersion: &6v" + KeywordBlock.plugin.getDescription().getVersion()));
-                commandSender.sendMessage(Lib.color_translate("    &3Author: &4hank9999"));
-                commandSender.sendMessage(Lib.color_translate("====================="));
+                commandSender.sendMessage(Libs.textColor("====================="));
+                commandSender.sendMessage(Libs.textColor("     &2[&dKeywordBlock&2]"));
+                commandSender.sendMessage(Libs.textColor("      &bVersion: &6v" + KeywordBlock.plugin.getDescription().getVersion()));
+                commandSender.sendMessage(Libs.textColor("    &3Author: &4hank9999"));
+                commandSender.sendMessage(Libs.textColor("====================="));
                 return true;
             }
             if (commandSender.hasPermission("KeywordBlock.admin")) {
                 if (strings[0].equalsIgnoreCase("help")) {
                     for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.help")) {
-                        commandSender.sendMessage(Lib.color_translate(keywordblock_name + " " + message));
+                        commandSender.sendMessage(Libs.textColor(keywordblock_name + " " + message));
                     }
                     return true;
                 }
                 if (strings[0].equalsIgnoreCase("reload")) {
                     KeywordBlock.plugin.reloadConfig();
                     for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.reload")) {
-                        commandSender.sendMessage(Lib.color_translate(keywordblock_name + " " + message));
+                        commandSender.sendMessage(Libs.textColor(keywordblock_name + " " + message));
                     }
                     return true;
                 }
                 if (strings[0].equalsIgnoreCase("list")) {
                     for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.list.prefix")) {
-                        commandSender.sendMessage(Lib.color_translate(keywordblock_name + " " + message));
+                        commandSender.sendMessage(Libs.textColor(keywordblock_name + " " + message));
                     }
                     if (KeywordBlock.plugin.getConfig().getStringList("words").size() == 0) {
                         for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.list.empty")) {
-                            commandSender.sendMessage(Lib.color_translate(message));
+                            commandSender.sendMessage(Libs.textColor(message));
                         }
                         return true;
                     }
@@ -56,21 +56,21 @@ final public class Main_Command implements TabExecutor {
                         if (word.equalsIgnoreCase("")) {
                             continue;
                         }
-                        commandSender.sendMessage(Lib.color_translate(" - &3" + word));
+                        commandSender.sendMessage(Libs.textColor(" - &3" + word));
                     }
                     return true;
                 }
                 if (strings[0].equalsIgnoreCase("add")) {
                     if (strings.length == 1) {
                         for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.add.without_key")) {
-                            commandSender.sendMessage(Lib.color_translate(keywordblock_name + " " + message));
+                            commandSender.sendMessage(Libs.textColor(keywordblock_name + " " + message));
                         }
                         return true;
                     }
                     List<String> temp = KeywordBlock.plugin.getConfig().getStringList("words");
                     if (temp.contains(strings[1])) {
                         for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.add.exists")) {
-                            commandSender.sendMessage(Lib.color_translate(keywordblock_name + " " + message));
+                            commandSender.sendMessage(Libs.textColor(keywordblock_name + " " + message));
                         }
                     } else {
                         temp.add(strings[1]);
@@ -78,7 +78,7 @@ final public class Main_Command implements TabExecutor {
                         KeywordBlock.plugin.saveConfig();
                         KeywordBlock.plugin.reloadConfig();
                         for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.add.success")) {
-                            String message1 = Lib.color_translate(keywordblock_name + " &9" + commandSender.getName() + " " + message + " &3" + strings[1]);
+                            String message1 = Libs.textColor(keywordblock_name + " &9" + commandSender.getName() + " " + message + " &3" + strings[1]);
                             KeywordBlock.plugin.getServer().broadcast(message1, "KeywordBlock.admin");
                         }
                     }
@@ -88,7 +88,7 @@ final public class Main_Command implements TabExecutor {
                 if (strings[0].equalsIgnoreCase("del")) {
                     if (strings.length == 1) {
                         for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.del.without_key")) {
-                            commandSender.sendMessage(Lib.color_translate(keywordblock_name + " " + message));
+                            commandSender.sendMessage(Libs.textColor(keywordblock_name + " " + message));
                         }
                         return true;
                     }
@@ -99,25 +99,25 @@ final public class Main_Command implements TabExecutor {
                         KeywordBlock.plugin.saveConfig();
                         KeywordBlock.plugin.reloadConfig();
                         for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.del.success")) {
-                            String message1 = Lib.color_translate(keywordblock_name + " &9" + commandSender.getName() + " " + message + " &3" + strings[1]);
+                            String message1 = Libs.textColor(keywordblock_name + " &9" + commandSender.getName() + " " + message + " &3" + strings[1]);
                             KeywordBlock.plugin.getServer().broadcast(message1, "KeywordBlock.admin");
                         }
 
                     } else {
                         for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.del.not_exist")) {
-                            commandSender.sendMessage(Lib.color_translate(keywordblock_name + " " + message));
+                            commandSender.sendMessage(Libs.textColor(keywordblock_name + " " + message));
                         }
                     }
                     return true;
                 }
                 for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.unknown")) {
-                    commandSender.sendMessage(Lib.color_translate(keywordblock_name + " " + message));
+                    commandSender.sendMessage(Libs.textColor(keywordblock_name + " " + message));
                 }
                 return true;
 
             } else {
                 for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.no_perm")) {
-                    commandSender.sendMessage(Lib.color_translate(keywordblock_name + " " + message));
+                    commandSender.sendMessage(Libs.textColor(keywordblock_name + " " + message));
                 }
                 return true;
             }
