@@ -1,6 +1,7 @@
 package com.github.hank9999.keywordblock.Commands;
 
 import com.github.hank9999.keywordblock.KeywordBlock;
+import com.github.hank9999.keywordblock.Libs.Config;
 import com.github.hank9999.keywordblock.Libs.Libs;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -19,7 +20,7 @@ final public class Main_Command implements TabExecutor {
     @Override
     final public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (command.getName().equalsIgnoreCase("keywordblock") || command.getName().equalsIgnoreCase("kb")) {
-            String keywordblock_name = KeywordBlock.plugin.getConfig().getString("command_lang.keywordblock_name");
+            String keywordblock_name = Config.command_lang.keywordblock_name;
             if (strings.length == 0) {
                 commandSender.sendMessage(Libs.textColor("====================="));
                 commandSender.sendMessage(Libs.textColor("     &2[&dKeywordBlock&2]"));
@@ -30,29 +31,31 @@ final public class Main_Command implements TabExecutor {
             }
             if (commandSender.hasPermission("KeywordBlock.admin")) {
                 if (strings[0].equalsIgnoreCase("help")) {
-                    for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.help")) {
+                    for (String message : Config.command_lang.help) {
                         commandSender.sendMessage(Libs.textColor(keywordblock_name + " " + message));
                     }
                     return true;
                 }
                 if (strings[0].equalsIgnoreCase("reload")) {
-                    KeywordBlock.plugin.reloadConfig();
-                    for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.reload")) {
+                    Config.reloadConfig();
+
+                    for (String message : Config.command_lang.reload) {
                         commandSender.sendMessage(Libs.textColor(keywordblock_name + " " + message));
                     }
                     return true;
                 }
                 if (strings[0].equalsIgnoreCase("list")) {
-                    for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.list.prefix")) {
+                    for (String message : Config.command_lang.list.prefix) {
                         commandSender.sendMessage(Libs.textColor(keywordblock_name + " " + message));
                     }
-                    if (KeywordBlock.plugin.getConfig().getStringList("words").size() == 0) {
-                        for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.list.empty")) {
+
+                    if (Config.words.size() == 0) {
+                        for (String message : Config.command_lang.list.empty) {
                             commandSender.sendMessage(Libs.textColor(message));
                         }
                         return true;
                     }
-                    for (String word : KeywordBlock.plugin.getConfig().getStringList("words")) {
+                    for (String word : Config.words) {
                         if (word.equalsIgnoreCase("")) {
                             continue;
                         }
@@ -62,22 +65,21 @@ final public class Main_Command implements TabExecutor {
                 }
                 if (strings[0].equalsIgnoreCase("add")) {
                     if (strings.length == 1) {
-                        for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.add.without_key")) {
+                        for (String message : Config.command_lang.add.without_key) {
                             commandSender.sendMessage(Libs.textColor(keywordblock_name + " " + message));
                         }
                         return true;
                     }
-                    List<String> temp = KeywordBlock.plugin.getConfig().getStringList("words");
+                    List<String> temp = Config.words;
                     if (temp.contains(strings[1])) {
-                        for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.add.exists")) {
+                        for (String message : Config.command_lang.add.exists) {
                             commandSender.sendMessage(Libs.textColor(keywordblock_name + " " + message));
                         }
                     } else {
                         temp.add(strings[1]);
-                        KeywordBlock.plugin.getConfig().set("words", temp);
-                        KeywordBlock.plugin.saveConfig();
-                        KeywordBlock.plugin.reloadConfig();
-                        for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.add.success")) {
+                        Config.setConfig("words", temp);
+                        Config.saveConfig();
+                        for (String message : Config.command_lang.add.success) {
                             String message1 = Libs.textColor(keywordblock_name + " &9" + commandSender.getName() + " " + message + " &3" + strings[1]);
                             KeywordBlock.plugin.getServer().broadcast(message1, "KeywordBlock.admin");
                         }
@@ -87,36 +89,35 @@ final public class Main_Command implements TabExecutor {
                 }
                 if (strings[0].equalsIgnoreCase("del")) {
                     if (strings.length == 1) {
-                        for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.del.without_key")) {
+                        for (String message : Config.command_lang.del.without_key) {
                             commandSender.sendMessage(Libs.textColor(keywordblock_name + " " + message));
                         }
                         return true;
                     }
-                    List<String> temp = KeywordBlock.plugin.getConfig().getStringList("words");
+                    List<String> temp = Config.words;
                     if (temp.contains(strings[1])) {
                         temp.remove(strings[1]);
-                        KeywordBlock.plugin.getConfig().set("words", temp);
-                        KeywordBlock.plugin.saveConfig();
-                        KeywordBlock.plugin.reloadConfig();
-                        for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.del.success")) {
+                        Config.setConfig("words", temp);
+                        Config.saveConfig();
+                        for (String message : Config.command_lang.del.success) {
                             String message1 = Libs.textColor(keywordblock_name + " &9" + commandSender.getName() + " " + message + " &3" + strings[1]);
                             KeywordBlock.plugin.getServer().broadcast(message1, "KeywordBlock.admin");
                         }
 
                     } else {
-                        for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.del.not_exist")) {
+                        for (String message : Config.command_lang.del.not_exist) {
                             commandSender.sendMessage(Libs.textColor(keywordblock_name + " " + message));
                         }
                     }
                     return true;
                 }
-                for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.unknown")) {
+                for (String message : Config.command_lang.unknown) {
                     commandSender.sendMessage(Libs.textColor(keywordblock_name + " " + message));
                 }
                 return true;
 
             } else {
-                for (String message : KeywordBlock.plugin.getConfig().getStringList("command_lang.no_perm")) {
+                for (String message : Config.command_lang.no_perm) {
                     commandSender.sendMessage(Libs.textColor(keywordblock_name + " " + message));
                 }
                 return true;
@@ -128,7 +129,7 @@ final public class Main_Command implements TabExecutor {
     @Override
     final public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args[0].equalsIgnoreCase("del") && args.length == 2) {
-            return KeywordBlock.plugin.getConfig().getStringList("words");
+            return Config.words;
         }
         if (args.length > 1) {
             return Collections.emptyList();

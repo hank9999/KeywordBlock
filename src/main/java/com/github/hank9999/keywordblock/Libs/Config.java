@@ -76,6 +76,15 @@ public class Config {
         setValue();
     }
 
+    public static void saveConfig() {
+        KeywordBlock.plugin.saveConfig();
+        reloadConfig();
+    }
+
+    public static void setConfig(String path, Object value) {
+        KeywordBlock.plugin.getConfig().set(path, value);
+    }
+
     private static String getString(String path) {
         return KeywordBlock.plugin.getConfig().getString(path);
     }
