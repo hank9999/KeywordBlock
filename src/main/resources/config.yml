@@ -17,7 +17,7 @@ message:
 
 mute:
   times: 3
-  keepptime: 3600
+  keeptime: 3600
   command:
     - 'mute %player% 30min Please mind your words'
   message:
