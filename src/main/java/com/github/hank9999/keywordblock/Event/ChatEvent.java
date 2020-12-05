@@ -1,7 +1,8 @@
 package com.github.hank9999.keywordblock.Event;
 
 import com.github.hank9999.keywordblock.KeywordBlock;
-import com.github.hank9999.keywordblock.Libs.Lib;
+import com.github.hank9999.keywordblock.Libs.Libs;
+import com.github.hank9999.keywordblock.Libs.timesCounter;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,7 +11,6 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -62,22 +62,18 @@ final public class ChatEvent implements Listener {
                 if (m1.lookingAt() || m2.lookingAt() || all.contains(keyword1_lowercase)) {
                     event.setCancelled(true);
                     for (String warn_message : KeywordBlock.plugin.getConfig().getStringList("message.warn.player")) {
-                        player.sendMessage(Lib.color_translate(warn_message.replaceAll("%player_name%", username).replaceAll("%player_message%", text)));
+                        player.sendMessage(Libs.textColor(warn_message.replaceAll("%player_name%", username).replaceAll("%player_message%", text)));
                     }
                     if (KeywordBlock.plugin.getConfig().getBoolean("function.admin-broadcast")) {
                         for (String broadcast_message : KeywordBlock.plugin.getConfig().getStringList("message.broadcast.admin")) {
-                            broadcast_message = Lib.color_translate(broadcast_message.replaceAll("%player_name%", username).replaceAll("%player_message%", text));
+                            broadcast_message = Libs.textColor(broadcast_message.replaceAll("%player_name%", username).replaceAll("%player_message%", text));
                             KeywordBlock.plugin.getServer().broadcast(broadcast_message, "KeywordBlock.admin");
                         }
                     }
-                    AtomicInteger count = KeywordBlock.plugin.times.get(username);
-                    if (count == null)
-                        KeywordBlock.plugin.times.put(username, new AtomicInteger(1));
-                    else
-                        count.incrementAndGet();
-                    if (KeywordBlock.plugin.times.get(username).intValue() >= KeywordBlock.plugin.getConfig().getInt("mute.times")) {
+                    timesCounter.add(username, 1);
+                    if (timesCounter.check(username)) {
                         for (String mute_message : KeywordBlock.plugin.getConfig().getStringList("mute.message")) {
-                            player.sendMessage(Lib.color_translate(mute_message));
+                            player.sendMessage(Libs.textColor(mute_message));
                             new BukkitRunnable() {
                                 @Override
                                 public void run() {
@@ -93,24 +89,9 @@ final public class ChatEvent implements Listener {
                                     }
                                 }
                             }.runTask(KeywordBlock.plugin);
-
                         }
-                        KeywordBlock.plugin.times.remove(username);
-                    }
-                    if (KeywordBlock.plugin.say_time.isEmpty() && KeywordBlock.plugin.getConfig().getBoolean("function.keeptime")) {
-                        KeywordBlock.plugin.say_time.put(username, (System.currentTimeMillis() / 1000));
-                        break;
-                    }
-                    if (KeywordBlock.plugin.say_time.get(username) == null && KeywordBlock.plugin.getConfig().getBoolean("function.keeptime")) {
-                        KeywordBlock.plugin.say_time.put(username, (System.currentTimeMillis() / 1000));
-                        break;
                     }
                     break;
-                }
-            }
-            if (KeywordBlock.plugin.say_time.get(username) != null && KeywordBlock.plugin.getConfig().getBoolean("function.keeptime")) {
-                if (((System.currentTimeMillis() / 1000) - KeywordBlock.plugin.say_time.get(username)) >= KeywordBlock.plugin.getConfig().getLong("mute.keeptime")) {
-                    KeywordBlock.plugin.say_time.remove(username);
                 }
             }
         }

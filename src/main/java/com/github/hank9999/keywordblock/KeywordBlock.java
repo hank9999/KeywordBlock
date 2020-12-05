@@ -4,6 +4,7 @@ import com.github.hank9999.keywordblock.Commands.Main_Command;
 import com.github.hank9999.keywordblock.Event.ChatEvent;
 import com.github.hank9999.keywordblock.Event.CommandPreprocessEvent;
 import com.github.hank9999.keywordblock.Libs.Config;
+import com.github.hank9999.keywordblock.Libs.timesCounter;
 import com.github.hank9999.keywordblock.Update.Updater;
 import com.github.hank9999.keywordblock.bStats.MetricsLite;
 import org.bukkit.ChatColor;
@@ -27,6 +28,8 @@ public final class KeywordBlock extends JavaPlugin {
         getLogger().info(ChatColor.AQUA + "KeywordBlock is reading config");
         Config.loadConfig();
         getLogger().info(ChatColor.AQUA + "KeywordBlock read config successfully");
+
+        timesCounter.add("initialization_only_for_start", 1);
 
         if (Config.function.detect) {
             getServer().getPluginManager().registerEvents(new ChatEvent(), this);
