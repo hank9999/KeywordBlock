@@ -17,7 +17,7 @@ public class timesCounter {
     private static final Map<String, Counter> timesCounters = new HashMap<>();
 
     public static Boolean check(String username) {
-        if (timesCounters.get(username).times > Config.mute.times) {
+        if (timesCounters.get(username).times >= Config.mute.times) {
             timesCounters.remove(username);
             return true;
         } else {
