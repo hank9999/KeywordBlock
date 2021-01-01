@@ -32,11 +32,15 @@ public class timesCounter {
             timesCounters.put(username, new Counter(times, nowTime));
             return;
         }
-        if (nowTime - count.sayTime <= Config.mute.keeptime) {
-            count.times += times;
+        if (Config.function.keeptime) {
+            if (nowTime - count.sayTime <= Config.mute.keeptime) {
+                count.times += times;
+            } else {
+                count.times = times;
+                count.sayTime = nowTime;
+            }
         } else {
-            count.times = times;
-            count.sayTime = nowTime;
+            count.times += times;
         }
         timesCounters.put(username, count);
     }
