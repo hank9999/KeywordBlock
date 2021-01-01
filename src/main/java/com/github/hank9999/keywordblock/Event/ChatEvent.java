@@ -40,8 +40,10 @@ final public class ChatEvent implements Listener {
                 for (String mute_message : Config.mute.message) {
                     player.sendMessage(Libs.textColor(mute_message));
                 }
-                for (String command : Config.mute.command) {
-                    Libs.runCommand(command.replaceAll(username, ""));
+                if (Config.function.mute) {
+                    for (String command : Config.mute.command) {
+                        Libs.runCommand(command.replaceAll("%player%", username));
+                    }
                 }
             }
         }
